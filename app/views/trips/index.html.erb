@@ -1,0 +1,20 @@
+
+  <div>
+    <% @trips.each do |trip| %>
+
+        <div>
+
+          <h2> <%= link_to trip.name, trip %></h2>
+          <div>
+            <% if trip.image_url %>
+                <%= image_tag trip.image_url %>
+            <% end %>
+          </div>
+          <p> <%= trip.destination %> </p>
+          <p> <%= trip.departure_date %></p>
+          <p> <%= trip.return_date %> </p>
+
+        </div>
+        <br>
+        <% end %>
+    </div>
