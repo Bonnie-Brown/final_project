@@ -1,0 +1,31 @@
+<%= form_with(model: @trip) do |form| %>
+
+<% if @trip.errors.any? %>
+<ul>
+ <% @trip.errors.full_messages.each do |message| %>
+
+ <li> <%= message %> </li>
+
+ <% end %>
+
+</ul>
+
+ <% end %>
+
+<div>
+<%= form.label :name %>
+<br>
+<%= form.text_field :name %>
+</div>
+<br>
+<div>
+<%= form.label :destination %>
+<br>
+<%= form.text_area :destination, cols: 50, rows: 5 %>
+</div>
+
+<br>
+
+<%= form.submit class:"btn btn-outline-primary" %>
+
+<% end %>
