@@ -1,31 +1,61 @@
-<%= form_with(model: @trip) do |form| %>
+<div class = "form">
+    <%= form_with(model: @trip) do |form| %>
 
-<% if @trip.errors.any? %>
-<ul>
- <% @trip.errors.full_messages.each do |message| %>
+        <% if @trip.errors.any? %>
 
- <li> <%= message %> </li>
+            <ul>
+                <% @trip.errors.full_messages.each do |message| %>
 
- <% end %>
+                    <li> <%= message %> </li>
 
-</ul>
+                <% end %>
 
- <% end %>
+            </ul>
 
-<div>
-<%= form.label :name %>
-<br>
-<%= form.text_field :name %>
+        <% end %>
+
+        <div class="class=mb-3">
+            <%= form.label :name, {class: "form-label"} %>
+            <br>
+            <%= form.text_field :name, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <%= form.label :destination, {class: "form-label"} %>
+            <br>
+            <%= form.text_field :destination, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <%= form.label :departure_date, {class: "form-label"} %>
+            <br>
+            <%= form.date_select :departure_date, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <%= form.label :return_date, {class: "form-label"} %>
+            <br>
+            <%= form.date_select :return_date, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <%= form.label :image, {class: "form-label"} %>
+            <br>
+            <%= form.text_field :image_url, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <%= form.submit class:"btn btn-outline-primary" %>
+
+    <% end %>
 </div>
-<br>
-<div>
-<%= form.label :destination %>
-<br>
-<%= form.text_area :destination, cols: 50, rows: 5 %>
-</div>
 
-<br>
-
-<%= form.submit class:"btn btn-outline-primary" %>
-
-<% end %>

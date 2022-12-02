@@ -1,6 +1,6 @@
 <h1> <%= @trip.name %> </h1>
 <h3> <%= @trip.destination %> </h3>
-<p>Departure: <%= @trip.departure_date %> Return: <%= @trip.return_date %></p>
+<p><%= @trip.departure_date.strftime("%B, %d, %Y") %> to <%=@trip.return_date.strftime("%B, %d, %Y")%></p>
 
 <div></div>
     <div>
@@ -10,3 +10,5 @@
         <%= link_to 'Edit', edit_trip_path(@trip) %>
     </div>
 </div>
+
+

@@ -2,19 +2,17 @@
   <div>
     <% @trips.each do |trip| %>
 
-        <div>
-
-          <h2> <%= link_to trip.name, trip %></h2>
-          <div>
-            <% if trip.image_url %>
-                <%= image_tag trip.image_url %>
-            <% end %>
-          </div>
-          <p> <%= trip.destination %> </p>
-          <p> <%= trip.departure_date %></p>
-          <p> <%= trip.return_date %> </p>
-
+      <div class="card mx-auto text-center index" style = "width: 500px;">
+        <%= image_tag trip.image_url, class:"card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title"><%= trip.name %></h5>
+          <p class="card-text"><%= trip.destination %></p>
+          <p><%= trip.departure_date.strftime("%B, %d, %Y") %> to <%=trip.return_date.strftime("%B, %d, %Y")%></p>
+          <%= link_to 'View', trip_path(trip) %>
         </div>
-        <br>
-        <% end %>
-    </div>
+      </div>
+    <% end %>
+  </div>
+
+
+
