@@ -1,4 +1,29 @@
 Trip.destroy_all
+User.destroy_all
+
+users = User.all
+
+PASSWORD = "123"
+super_user = User.create(
+    first_name: "Admin",
+    last_name: "User",
+    email: "admin@user.com",
+    password: PASSWORD,
+    admin?: true
+)
+
+10.times do
+    first_name = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+
+    User.create(
+        first_name: first_name,
+        last_name: last_name,
+        email:"#{first_name}@#{last_name}.com",
+        password: PASSWORD,
+        admin?: false
+    )
+end
 
 10.times do
 
@@ -14,10 +39,14 @@ Trip.destroy_all
         return_date: return_date,
         image_url: image_url,
         created_at: created_at,
-        updated_at: created_at
+        updated_at: created_at,
+        user: users.sample
     )
 
 end
 
 trips = Trip.all
+
+
 puts Cowsay.say("Generated #{trips.count} trips", :cow)
+puts Cowsay.say("Generated #{users.count} users", :sheep)

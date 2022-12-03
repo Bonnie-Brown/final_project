@@ -2,6 +2,10 @@ class TripsController < ApplicationController
 
     before_action :find_trip, only: [:edit, :update, :show, :destroy]
 
+    before_action :authenticate_user!
+
+    before_action :authorize_user!, only: [:read, :edit, :update, :destroy]
+
     # Create
 
     def new
@@ -9,21 +13,22 @@ class TripsController < ApplicationController
     end
 
     def create
-        @trip = Trip.new(params[trip_params])
+        @trip = Trip.new(trip_params)
+        @trip.user = current_user
 
-        if trip.save 
+        if @trip.save 
             flash[:success] = "Trip successfully created!"
             redirect_to @trip
         else
             flash[:error] = "Something went wrong"
-            render 'new'
+            render 'new', status: 303
         end
     end
 
     # Read
 
     def index
-        @trips = Trip.order(created_at: :desc)
+        @trips = current_user.trips.order(departure_date: :asc)
     end
 
     def show
@@ -53,14 +58,18 @@ class TripsController < ApplicationController
         redirect_to root_path
     end
 
-private
+    private
 
-def find_trip
-    @trip = Trip.find params[:id]
-end
+    def find_trip
+        @trip = Trip.find params[:id]
+    end
 
-def trip_params
-    params.require(:trip).permit(:name, :destination)
-end
+    def trip_params
+        params.require(:trip).permit(:name, :destination, :departure_date, :return_date, :image_url)
+    end
+
+    def authorize_user!
+        redirect_to root_path, alert: "Not authorized to change post." unless can?(:crud, @trip)
+    end
 
 end

@@ -3,7 +3,11 @@
     <% @trips.each do |trip| %>
 
       <div class="card mx-auto text-center index" style = "width: 500px;">
-        <%= image_tag trip.image_url, class:"card-img-top" %>
+        <% if trip.image_url%>
+          
+            <%= image_tag trip.image_url, class:"card-img-top" %>
+          
+        <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= trip.name %></h5>
           <p class="card-text"><%= trip.destination %></p>

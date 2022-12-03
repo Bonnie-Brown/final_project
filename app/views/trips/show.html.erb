@@ -1,14 +1,17 @@
-<h1> <%= @trip.name %> </h1>
-<h3> <%= @trip.destination %> </h3>
-<p><%= @trip.departure_date.strftime("%B, %d, %Y") %> to <%=@trip.return_date.strftime("%B, %d, %Y")%></p>
+<%= stylesheet_link_tag "show_page", "data-turbo-track": "reload" %>
 
-<div></div>
-    <div>
-        <%= button_to 'Delete', trip_path(@trip), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}} %>
-    </div>
-    <div>
-        <%= link_to 'Edit', edit_trip_path(@trip) %>
-    </div>
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= @trip.name %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @trip.destination %></h6>
+    <p class="card-text"><%= @trip.departure_date.strftime("%B, %d, %Y")%> to <%=@trip.return_date.strftime("%B, %d, %Y")%></p>
+    <p class="card-text">Created by: <%= @trip.user.first_name%></p>
+    <%= link_to 'Edit', edit_trip_path(@trip), class:"card-link"%>
+    <%= button_to 'Delete', trip_path(@trip), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"card-link" %>
+    
+  </div>
 </div>
+
 
 

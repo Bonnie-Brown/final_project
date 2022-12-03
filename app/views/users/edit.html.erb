@@ -1,0 +1,52 @@
+<h1> Update Your Profile </h1>
+
+<% if @user.errors.any? %>
+    <p> <%= @user.errors.full_messages.join(',') %> </p>
+<% end %>
+
+<%= form_with model: @user do |form| %>
+
+<form>
+  <div class="mb-3">
+        <%= form.label :first_name %>
+        <br>
+        <%= form.text_field :first_name, placeholder: current_user.first_name %>
+  </div>
+
+  <div class="mb-3">
+        <%= form.label :last_name %>
+        <br>
+        <%= form.text_field :last_name, placeholder: current_user.last_name %>
+  </div>
+
+  <div class="mb-3">
+        <%= form.label :email %>
+        <br>
+        <%= form.text_field :email, placeholder: current_user.email %>
+  </div>
+
+  <div class="mb-3">
+
+        <%= form.label :current_password %>
+        <br>
+        <%= form.password_field :current_password %>
+  </div>
+
+  <div class="mb-3">
+        <%= form.label :new_password %>
+        <br>
+        <%= form.password_field :new_password %>
+  </div>
+        
+  <div class="mb-3">
+        <%= form.label :new_password_confirmation %>
+        <br>
+        <%= form.password_field :new_password_confirmation %>
+  </div>
+
+  <br>
+
+  <%= form.submit "Update", method: :patch, class:"btn btn-outline-primary" %>
+
+  <% end %>
+

@@ -9,18 +9,27 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/trips">View All</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/trips/new">New</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Travel Warnings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Profile</a>
-        </li>
+         <% if(current_user.present?)%>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/trips">View All</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/trips/new">New</a>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Profile', edit_user_path(current_user) %>
+          </li>
+          <li class="nav-item">
+            <%= button_to 'Sign Out', session_path, method: :delete %>
+          </li>
+         <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign In', new_session_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign Up', new_user_path %>
+            </li>
+          <%end%>
       </ul>
     </div>
   </div>
