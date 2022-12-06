@@ -47,6 +47,10 @@ gem "sassc-rails"
 
 gem "cancancan"
 
+gem 'fullcalendar-rails', '~> 3.9'
+
+gem 'momentjs-rails', '~> 2.29', '>= 2.29.4.1'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
