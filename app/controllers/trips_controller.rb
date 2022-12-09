@@ -32,11 +32,6 @@ class TripsController < ApplicationController
     end
 
     def show
-
-       p '******'
-       p 'trips controller'
-       p @trip
-       p '*****'
         
 
     end

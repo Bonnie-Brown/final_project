@@ -1,41 +1,11 @@
 <h1>Details</h1>
 
-<% if @accommodation.errors.any? %>
-   <ul>
-     <% @accommodation.errors.full_messages.each do |message| %>
+<% @accommodations.each do |a| %>
 
-     <li> <%= message %> </li>
+<p><%=a.name%></p>
 
-      <% end %>
-
-    </ul>
-
- <% end %>
+<%end%>
 
 
- <%= form_with(model: @accommodation, @trip) do |form| %>
- 
-<div>
-
-    <% form.label :name%>
- 
-    <%= form.text_field :name, placeholder: "Where will you be staying?"%> 
-    <br>
-    <br>
-    <%= form.submit "Submit", class:"btn btn-outline-primary" %>
-
-</div>
-<% end %>
-
-<br>
-
-<div>
-    <% @accommodations.each do |accommodation| %>
-<div>
- <%= accommodation.name %> <br>
-
-</div>
-<% end %>
-<br>
 
 

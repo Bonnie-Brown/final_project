@@ -3,6 +3,6 @@ class Accommodation < ApplicationRecord
   
   belongs_to :user
   belongs_to :details #, dependent: :destroy
-  belongs_to :trips, through: :details 
+  belongs_to :trips
 
 end

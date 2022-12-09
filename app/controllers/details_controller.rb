@@ -9,9 +9,9 @@ class DetailsController < ApplicationController
 
     def index
 
-        p '******'
-        p Trip.find params[:trip_id]
-        p '******'  
+        # p '******'
+        # p Trip.find params[:trip_id]
+        # p '******'  
         @trip = Trip.find params[:trip_id]
         @accommodations = @trip.accommodations
         @accommodation = Accommodation.new 
