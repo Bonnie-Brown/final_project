@@ -4,5 +4,7 @@ class Trip < ApplicationRecord
     has_many :details #, dependent: :destroy
     has_many :accommodations, through: :details
 
+    has_many :todo_lists
+
     
 end

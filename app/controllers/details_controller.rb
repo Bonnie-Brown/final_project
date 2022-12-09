@@ -13,8 +13,13 @@ class DetailsController < ApplicationController
         # p Trip.find params[:trip_id]
         # p '******'  
         @trip = Trip.find params[:trip_id]
-        @accommodations = @trip.accommodations
-        @accommodation = Accommodation.new 
+        # @accommodations = @trip.accommodations
+        # @accommodation = Accommodation.new 
+
+        # @trip = @detail.trip
+        @details = @trip.details
+        # @accomodations = @details.accomodations
+
 
     end
 

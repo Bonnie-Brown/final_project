@@ -19,7 +19,8 @@
   
    <div class="d-grid gap-2 col-12 mx-auto">
       <%= link_to 'View Details', trip_details_path(@trip), class:"btn btn-dark" %>
-      <button class="btn btn-dark" type="button">To Do List</button>
+      <%= link_to 'To Do Lists', trip_todo_lists_path(@trip), class:"btn btn-dark" %>
+      
    </div> 
  </div>
 </div>

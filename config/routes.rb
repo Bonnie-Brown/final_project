@@ -7,6 +7,9 @@ Rails.application.routes.draw do
         resources :transportations
         resources :accomodations
       end
+      resources :todo_lists do
+        resources :todo_items
+      end
     end
   end
 

@@ -1,11 +1,8 @@
 <h1>Details</h1>
 
-<% @accommodations.each do |a| %>
-
-<p><%=a.name%></p>
-
-<%end%>
-
-
-
+<% @details.each do |d| %>
+  <% d.accommodations.each do |a|%>
+    <p><%=a.name%></p>
+  <% end %>
+<% end %>
 
