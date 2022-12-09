@@ -1,5 +1,7 @@
 Trip.destroy_all
 User.destroy_all
+Detail.destroy_all
+Accommodation.destroy_all
 
 users = User.all
 

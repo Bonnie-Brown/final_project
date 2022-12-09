@@ -2,6 +2,8 @@ class User < ApplicationRecord
     has_secure_password
 
     has_many :trips, dependent: :destroy
+    has_many :accommodations, dependent: :destroy
+    has_many :transportations, dependent: :destroy
 
     # Validations 
 

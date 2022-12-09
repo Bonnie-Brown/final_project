@@ -10,9 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_02_233330) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_08_211706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accommodations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.string "type"
+    t.string "address"
+    t.string "phone"
+    t.string "email"
+    t.date "check_in_date"
+    t.date "check_out_date"
+    t.time "check_in_time"
+    t.time "check_out_time"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "detail_id", null: false
+    t.index ["detail_id"], name: "index_accommodations_on_detail_id"
+    t.index ["user_id"], name: "index_accommodations_on_user_id"
+  end
+
+  create_table "details", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "trip_id"
+    t.index ["trip_id"], name: "index_details_on_trip_id"
+  end
+
+  create_table "todo_lists", force: :cascade do |t|
+    t.string "title"
+    t.bigint "trips_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trips_id"], name: "index_todo_lists_on_trips_id"
+  end
+
+  create_table "transportations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "company_name"
+    t.date "departure_date"
+    t.time "check_in_time"
+    t.time "arrival_time"
+    t.text "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "detail_id", null: false
+    t.index ["detail_id"], name: "index_transportations_on_detail_id"
+    t.index ["user_id"], name: "index_transportations_on_user_id"
+  end
 
   create_table "trips", force: :cascade do |t|
     t.string "name"
@@ -37,5 +85,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_02_233330) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "accommodations", "details"
+  add_foreign_key "accommodations", "users"
+  add_foreign_key "todo_lists", "trips", column: "trips_id"
+  add_foreign_key "transportations", "details"
+  add_foreign_key "transportations", "users"
   add_foreign_key "trips", "users"
 end

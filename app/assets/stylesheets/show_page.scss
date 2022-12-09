@@ -1,5 +1,18 @@
 .card{
     margin-top: 50px;
-    width: 500px
+    width: 400px;
+    align-items: center;
+}
+
+.card-title{
+    text-align: center;
+    
+    margin-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+.card-subtitle{
+    text-align: center;
+    padding-bottom: 2vh;
 }
 
