@@ -14,12 +14,13 @@
          <%= button_to 'Delete', trip_path(@trip), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-outline-danger" %>
       </div>
    </div>
-   <br>
+ 
    <br>
   
    <div class="d-grid gap-2 col-12 mx-auto">
-      <%= link_to 'View Accommodation Details', trip_accommodations_path(@trip), class:"btn btn-dark" %>
-      <%#= link_to 'To Do Lists', trip_todo_lists_path(@trip), class:"btn btn-dark" %>
+      <%= link_to 'Accommodation Details', trip_accommodations_path(@trip), class:"btn btn-dark" %>
+      <%= link_to 'Transportation Details', trip_transportations_path(@trip), class:"btn btn-dark" %>
+      <%= link_to 'To-Do Lists', trip_todo_lists_path(@trip), class:"btn btn-dark" %>
       
    </div> 
  </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_10_223752) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_11_064223) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,10 +43,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_223752) do
 
   create_table "todo_lists", force: :cascade do |t|
     t.text "description"
-    t.bigint "trips_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trips_id"], name: "index_todo_lists_on_trips_id"
+    t.bigint "user_id", null: false
+    t.bigint "trip_id", null: false
+    t.index ["trip_id"], name: "index_todo_lists_on_trip_id"
+    t.index ["user_id"], name: "index_todo_lists_on_user_id"
   end
 
   create_table "transportations", force: :cascade do |t|
@@ -58,6 +60,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_223752) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "trip_id", null: false
+    t.index ["trip_id"], name: "index_transportations_on_trip_id"
     t.index ["user_id"], name: "index_transportations_on_user_id"
   end
 
@@ -87,7 +91,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_223752) do
   add_foreign_key "accommodations", "trips"
   add_foreign_key "accommodations", "users"
   add_foreign_key "todo_items", "todo_lists", column: "todo_lists_id"
-  add_foreign_key "todo_lists", "trips", column: "trips_id"
+  add_foreign_key "todo_lists", "trips"
+  add_foreign_key "todo_lists", "users"
+  add_foreign_key "transportations", "trips"
   add_foreign_key "transportations", "users"
   add_foreign_key "trips", "users"
 end

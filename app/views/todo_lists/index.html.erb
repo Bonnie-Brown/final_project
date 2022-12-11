@@ -1,3 +1,22 @@
 <h1>To Do Lists</h1>
 
+<div>
+
+ <% @todo_lists.each do |todo_list| %>
+      <div class="card mx-auto text-center index" style = "width: 40vw;">
+      
+        <div class="card-body">
+       
+          <h5 class="card-title"><%= todo_list.description %></h5>
+          <%= link_to 'View', [@trip, todo_list]%>
+        </div>
+      </div>
+
+ <% end %>
+
 <%= link_to 'New List', new_trip_todo_list_path(@trip), class:"btn btn-dark" %>
+
+</div>
+
+
+

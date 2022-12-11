@@ -1,0 +1,10 @@
+<%= form_with(model:[@trip, @transportation]) do |form| %>
+
+<div>
+    <%= form.label :company_name %>
+    <%= form.text_field :company_name %>
+</div>
+
+<%= form.submit class:"btn btn-outline-primary" %>
+
+<% end %>

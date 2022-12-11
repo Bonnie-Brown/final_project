@@ -1,0 +1,20 @@
+<h1>Transportation Details</h1>
+
+
+<div>
+
+ <% @transportations.each do |transportation| %>
+      <div class="card mx-auto text-center index" style = "width: 40vw;">
+      
+        <div class="card-body">
+       
+          <h5 class="card-title"><%= transportation.company_name %></h5>
+          <%= link_to 'View', [@trip, transportation]%>
+        </div>
+      </div>
+
+        <% end %>
+
+<%= link_to 'Add Transportation', new_trip_transportation_path(@trip), class:"btn btn-dark" %>
+
+</div>

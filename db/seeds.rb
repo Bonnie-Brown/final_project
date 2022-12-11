@@ -1,9 +1,11 @@
 Trip.destroy_all
 User.destroy_all
 Accommodation.destroy_all
+Transportation.destroy_all
 
 users = User.all
 accommodations = Accommodation.all
+transportations = Transportation.all
 
 PASSWORD = "123"
 super_user = User.create(
@@ -45,17 +47,28 @@ end
         user: users.sample
     )
        if t.valid? 
-        rand(1..5).times do 
-            Accommodation.create(
-                name: Faker::Hacker.say_something_smart, 
-                trip: t,
-                user: users.sample,
-                address: Faker::Address.full_address,
-                phone: '000-000-0000',
-                email: 'hotel@email.com',
-            )
+            rand(1..5).times do 
+                Accommodation.create(
+                    name: Faker::Lorem.sentence(word_count: 5), 
+                    trip: t,
+                    user: users.sample,
+                    address: Faker::Address.full_address,
+                    phone: '000-000-0000',
+                    email: 'hotel@email.com',
+                )
+            end 
+       
+            rand(1..5).times do
+                Transportation.create(
+                    company_name: Faker::Lorem.sentence(word_count: 2),
+                    trip: t,
+                    user: users.sample,
+                    created_at: created_at,
+                    updated_at: created_at
+                )
+            end
         end
-    end
+    
 
 end
 
@@ -64,4 +77,5 @@ trips = Trip.all
 
 puts Cowsay.say("Generated #{trips.count} trips", :cow)
 puts Cowsay.say("Generated #{users.count} users", :sheep)
-puts Cowsay.say("Generated #{accommodations.count} users", :dragon)
+puts Cowsay.say("Generated #{accommodations.count} accommodations", :dragon)
+puts Cowsay.say("Generated #{transportations.count} transportations", :cheese)

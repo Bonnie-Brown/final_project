@@ -1,35 +1,44 @@
 class TodoListsController < ApplicationController
 
+    before_action :find_trip
     before_action :find_todo_list, only: [:edit, :update, :show, :destroy]
+    before_action :authenticate_user!
+
+    # Create
 
     def new
         @todo_list = TodoList.new
-         @trip = Trip.find(params[:trip_id])
     end
 
     def create
 
         @todo_list = TodoList.new(todo_list_params)
+        @todo_list.trip = @trip
+        @todo_list.user = current_user
         
 
         if @todo_list.save
             flash[:success] = "List saved!"
-            redirect to @todo_list
+            redirect_to trip_todo_lists_path
         else
-            render 'new', status: 303
+            render @trip, status: 303
         end
     end
 
+    # Read
+
     def index
-        @trip = Trip.find params[:trip_id]
+       
         @todo_lists = @trip.todo_lists.order(created_at: :desc)
         
     end
 
     def show
-        @todo_list_items = @todo_list.todo_list_items.order(created_at: :desc)
-        @todo_list_item = TodoList_item.new
+        # @todo_list_items = @todo_list.todo_list_items.order(created_at: :desc)
+        # @todo_list_item = TodoList_item.new
     end
+
+    # Update
 
     def edit
     end
@@ -43,6 +52,8 @@ class TodoListsController < ApplicationController
         end
     end
 
+    # Destroy
+
     def destroy
         @todo_list.destroy
         flash[:success] = 'List deleted.'
@@ -50,6 +61,11 @@ class TodoListsController < ApplicationController
     end
 
     private
+
+    def find_trip
+        @trip = Trip.find params[:trip_id] 
+
+    end
 
     def find_todo_list
         @todo_list = TodoList.find(params[:id])

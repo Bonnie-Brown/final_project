@@ -17,6 +17,9 @@ Rails.application.routes.draw do
      resources :trips do
       resources :transportations
       resources :accommodations
+      resources :todo_lists do
+        resources :todo_items
+      end
      end
 
 
