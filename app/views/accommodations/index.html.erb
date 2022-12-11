@@ -1,0 +1,23 @@
+<h1>Accommodations</h1>
+
+
+ 
+
+<div>
+
+ <% @accommodations.each do |accommodation| %>
+      <div class="card mx-auto text-center index" style = "width: 40vw;">
+      
+        <div class="card-body">
+       
+          <h5 class="card-title"><%= accommodation.name %></h5>
+          <%= link_to 'View', [@trip, accommodation]%>
+        </div>
+      </div>
+
+        <% end %>
+
+<%= link_to 'Add Accommodation', new_trip_accommodation_path(@trip), class:"btn btn-dark" %>
+
+</div>
+

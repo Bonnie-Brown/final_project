@@ -1,46 +1,65 @@
 class AccommodationsController < ApplicationController
 
-    # before_action :find_details
+    before_action :find_trip
+    #before_action :find_accommodation, only: [:show]
+    
     before_action :authenticate_user!
 
+   #Create
 
-    def create
-        print '****** before accomodation'
-        @accommodation = Accommodation.new(accommodation_params)
-        print '****** after accomodation'
-        # @accommodation.detail = @detail
-        @accommodation.user = current_user
-        if @accommodation.save
-            flash[:success] = "Accommodation successfully created!"
-            redirect_to @trip
-        else
-            # @accommodations = @trip.details.accommodations.order(created_at: :desc)
-            render "/trips/:id/detail", status: 303 
-        end
-    end
+   def new
+    @accommodation = Accommodation.new
+   end
 
-    def destroy
-        @accommodation = Accomodation.find params[:id]
+   def create
 
-        if can?(:crud, @accommodation)
-            @accommodation.destroy
-            redirect_to trip_path(@comment.post)
-            flash[:success] = "Comment has been deleted."
-        else
-            redirect_to trip_detail_path, alert: "Not authorized to change comment."
-        end
+    @accommodation = Accommodation.new(accommodation_params)
+    @accommodation.trip = @trip
+    @accommodation.user = current_user
+
+    if @accommodation.save
+        flash[:success] = "Comment successfully created!"
+        redirect_to @trip
+    else
         
+        render @trip, status: 303 
     end
 
-    private
+   end
 
-    # def find_details
-    #     @details = Trip.find params[:trip_id]
-    # end
+   #Read
+
+   def index
+    @accommodations = @trip.accommodations.order(created_at: :desc)
+   end
+
+   def show
+
+    # @trip = @accommodation.trip
+   
+    
+
+   end
+
+   #Destroy
+
+   def destroy
+   end
+
+       private
+
+    def find_trip
+        @trip = Trip.find params[:trip_id] 
+
+    end
+
+    def find_accommodation
+         @accommodation = Accommodation.find params[:accommodation_id]
+    end
+
 
     def accommodation_params
-        params.require(:accommodation).permit(:name)
+        params.require(:accommodation).permit(:name, :address, :phone, :email, :check_in_date, :check_out_date, :check_in_time, :check_out_time, :note)
     end
-
 
 end

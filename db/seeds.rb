@@ -1,9 +1,9 @@
 Trip.destroy_all
 User.destroy_all
-Detail.destroy_all
 Accommodation.destroy_all
 
 users = User.all
+accommodations = Accommodation.all
 
 PASSWORD = "123"
 super_user = User.create(
@@ -34,7 +34,7 @@ end
     return_date = Faker::Date.between(from: '2023-01-30', to: '2024-01-30')
     image_url = 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
 
-    Trip.create(
+    t = Trip.create(
         name: Faker::Lorem.sentence(word_count: 3),
         destination: Faker::Lorem.word,
         departure_date: departure_date,
@@ -44,6 +44,18 @@ end
         updated_at: created_at,
         user: users.sample
     )
+       if t.valid? 
+        rand(1..5).times do 
+            Accommodation.create(
+                name: Faker::Hacker.say_something_smart, 
+                trip: t,
+                user: users.sample,
+                address: Faker::Address.full_address,
+                phone: '000-000-0000',
+                email: 'hotel@email.com',
+            )
+        end
+    end
 
 end
 
@@ -52,3 +64,4 @@ trips = Trip.all
 
 puts Cowsay.say("Generated #{trips.count} trips", :cow)
 puts Cowsay.say("Generated #{users.count} users", :sheep)
+puts Cowsay.say("Generated #{accommodations.count} users", :dragon)

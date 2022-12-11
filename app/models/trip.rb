@@ -1,9 +1,8 @@
 class Trip < ApplicationRecord
 
     belongs_to :user
-    has_many :details #, dependent: :destroy
-    has_many :accommodations, through: :details
-
+    has_many :accommodations 
+    has_many :transportations
     has_many :todo_lists
 
     

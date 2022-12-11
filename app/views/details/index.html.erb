@@ -6,3 +6,17 @@
   <% end %>
 <% end %>
 
+ <%= form_with(model: @accommodation) do |form| %>
+ 
+ <div>
+
+ <% form.label :name%>
+ 
+ <%= form.text_field :name, placeholder: "Where are you staying?"%> 
+ <br>
+ <br>
+ <%= form.submit "Submit", class:"btn btn-outline-primary" %>
+
+ </div>
+ <% end %>
+

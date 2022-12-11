@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_09_022333) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_10_223752) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accommodations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
-    t.string "type"
     t.string "address"
     t.string "phone"
     t.string "email"
@@ -28,16 +27,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_022333) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "detail_id", null: false
-    t.index ["detail_id"], name: "index_accommodations_on_detail_id"
+    t.bigint "trip_id", null: false
+    t.index ["trip_id"], name: "index_accommodations_on_trip_id"
     t.index ["user_id"], name: "index_accommodations_on_user_id"
-  end
-
-  create_table "details", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "trip_id"
-    t.index ["trip_id"], name: "index_details_on_trip_id"
   end
 
   create_table "todo_items", force: :cascade do |t|
@@ -66,8 +58,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_022333) do
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "detail_id", null: false
-    t.index ["detail_id"], name: "index_transportations_on_detail_id"
     t.index ["user_id"], name: "index_transportations_on_user_id"
   end
 
@@ -94,11 +84,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_09_022333) do
     t.index ["email"], name: "index_users_on_email"
   end
 
-  add_foreign_key "accommodations", "details"
+  add_foreign_key "accommodations", "trips"
   add_foreign_key "accommodations", "users"
   add_foreign_key "todo_items", "todo_lists", column: "todo_lists_id"
   add_foreign_key "todo_lists", "trips", column: "trips_id"
-  add_foreign_key "transportations", "details"
   add_foreign_key "transportations", "users"
   add_foreign_key "trips", "users"
 end
