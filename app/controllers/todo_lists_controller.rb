@@ -34,8 +34,8 @@ class TodoListsController < ApplicationController
     end
 
     def show
-        # @todo_list_items = @todo_list.todo_list_items.order(created_at: :desc)
-        # @todo_list_item = TodoList_item.new
+        @todo_items = @todo_list.todo_items.order(created_at: :desc)
+        @todo_item = TodoItem.new
     end
 
     # Update

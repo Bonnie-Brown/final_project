@@ -68,7 +68,6 @@ class AccommodationsController < ApplicationController
 
     def find_trip
         @trip = Trip.find params[:trip_id] 
-
     end
 
     def find_accommodation

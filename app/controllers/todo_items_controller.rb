@@ -1,2 +1,66 @@
 class TodoItemsController < ApplicationController
+
+    before_action :find_todo_list
+    before_action :find_trip
+    before_action :find_todo_item, only: [:destroy]
+    before_action :authenticate_user!
+
+    # Create
+
+    def create
+        @todo_item = TodoItem.new(todo_item_params)
+        @todo_item.todo_list = @todo_list
+        @todo_item.trip = @trip
+        @todo_item.user = current_user
+
+        if @todo_item.save
+            flash[:success] = "Item has been added to the list."
+            redirect_to trip_todo_list_path(@trip, @todo_list)
+        else
+            @todo_items = @todo_list.todo_items.order(created_at: :desc)
+            render root_path, status: 303
+        end
+    end
+
+    # Read
+
+    def show
+    end
+
+    # Update
+
+    def edit
+    end
+
+    def update
+    end
+
+    # Destroy
+
+    def destroy
+        @todo_item = TodoItem.find_by_id params[:id]
+        # @todo_item.todo_list = @todo_list
+        # @todo_item.trip = @trip
+        # @todo_item.user = current_user
+        @todo_item.destroy
+        redirect_to trip_todo_list_path
+    end
+
+    private
+
+    def find_trip
+        @trip = Trip.find params[:trip_id] 
+    end
+
+    def find_todo_list
+        @todo_list = TodoList.find params[:todo_list_id]
+    end
+
+    def find_todo_item
+        @todo_item = TodoItem.find_by_id params[:id]
+    end
+
+    def todo_item_params
+        params.require(:todo_item).permit(:description, :completed)
+    end
 end
