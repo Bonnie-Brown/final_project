@@ -1,7 +1,7 @@
 class AccommodationsController < ApplicationController
 
     before_action :find_trip
-    #before_action :find_accommodation, only: [:show]
+    before_action :find_accommodation, only: [:show]
     
     before_action :authenticate_user!
 
@@ -19,7 +19,7 @@ class AccommodationsController < ApplicationController
 
     if @accommodation.save
         flash[:success] = "Comment successfully created!"
-        redirect_to @trip
+        redirect_to trip_accommodations_path
     else
         
         render @trip, status: 303 
@@ -54,7 +54,7 @@ class AccommodationsController < ApplicationController
     end
 
     def find_accommodation
-         @accommodation = Accommodation.find params[:accommodation_id]
+         @accommodation = Accommodation.find_by_id params[:id]
     end
 
 
