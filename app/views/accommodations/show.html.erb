@@ -2,4 +2,6 @@
 
     <div><h1 ><%= @accommodation.name %></h1></div>
     <p >Created by: <%= @accommodation.user.first_name%></p>
+    <%= link_to 'Edit', edit_trip_accommodation_path(@trip, @accommodation), class:"btn btn-outline-primary" %>
+     <%= button_to 'Delete', trip_accommodation_path(@trip, @accommodation), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-outline-danger" %>
    </div>

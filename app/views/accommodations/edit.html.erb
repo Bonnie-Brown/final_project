@@ -1,0 +1,12 @@
+<h1>Update Accommodation</h1>
+
+<%= form_with(model:@accommodation) do |form| %>
+
+<div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+</div>
+
+<%= form.submit class:"btn btn-outline-primary" %>
+
+<% end %>
