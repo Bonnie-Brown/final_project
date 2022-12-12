@@ -2,7 +2,7 @@ class TodoListsController < ApplicationController
 
     before_action :find_trip
     before_action :find_todo_list, only: [:edit, :update, :show, :destroy]
-    # before_action :authenticate_user!
+    before_action :authenticate_user!
 
     # Create
 
@@ -47,6 +47,7 @@ class TodoListsController < ApplicationController
     def update
         if @todo_list.update(todo_list_params)
             flash[:success] = 'List updated!'
+            redirect_to trip_todo_list_path
         else
             flash[:error] = "Something went wrong"
             render 'edit'

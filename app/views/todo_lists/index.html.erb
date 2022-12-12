@@ -7,7 +7,9 @@
       
         <div class="card-body">
        
-          <h5 class="card-title"><%= todo_list.description %></h5>
+          <h5 class="card-title"><%= todo_list.description %>
+            <h6><span class="badge bg-<%= todo_list.badge_color %>"><%= todo_list.status %></span></h6>
+          </h5>
           <%= link_to 'View', [@trip, todo_list]%>
         </div>
       </div>

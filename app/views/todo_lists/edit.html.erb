@@ -1,0 +1,12 @@
+<h1>Edit To Do List</h1>
+
+ <%= form_with(model:[@trip, @todo_list]) do |form| %>
+    <div>
+        <% form.label :description%>
+        <%= form.text_area :description, placeholder: "What's this list for?"%> 
+    </div>
+    <br>
+    <br>
+    <%= form.submit "Submit", class:"btn btn-outline-primary" %>
+
+ <% end %>
