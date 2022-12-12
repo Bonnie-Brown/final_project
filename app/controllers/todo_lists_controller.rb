@@ -36,6 +36,7 @@ class TodoListsController < ApplicationController
     def show
         @todo_items = @todo_list.todo_items.order(created_at: :desc)
         @todo_item = TodoItem.new
+        
     end
 
     # Update
@@ -63,12 +64,12 @@ class TodoListsController < ApplicationController
     private
 
     def find_trip
-        @trip = Trip.find params[:trip_id] 
+        @trip = Trip.find_by_id params[:id] 
 
     end
 
     def find_todo_list
-        @todo_list = TodoList.find(params[:id])
+        @todo_list = TodoList.find_by_id params[:id]
     end
 
     def todo_list_params

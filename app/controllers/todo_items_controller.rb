@@ -2,7 +2,7 @@ class TodoItemsController < ApplicationController
 
     before_action :find_todo_list
     before_action :find_trip
-    before_action :find_todo_item, only: [:destroy]
+    before_action :find_todo_item
     before_action :authenticate_user!
 
     # Create
@@ -10,7 +10,7 @@ class TodoItemsController < ApplicationController
     def create
         @todo_item = TodoItem.new(todo_item_params)
         @todo_item.todo_list = @todo_list
-        @todo_item.trip = @trip
+        # @todo_item.trip = @trip
         @todo_item.user = current_user
 
         if @todo_item.save
@@ -38,22 +38,20 @@ class TodoItemsController < ApplicationController
     # Destroy
 
     def destroy
-        @todo_item = TodoItem.find_by_id params[:id]
-        # @todo_item.todo_list = @todo_list
-        # @todo_item.trip = @trip
-        # @todo_item.user = current_user
+      
         @todo_item.destroy
-        redirect_to trip_todo_list_path
+        redirect_to root_path
+ 
     end
 
     private
 
     def find_trip
-        @trip = Trip.find params[:trip_id] 
+        @trip = Trip.find_by_id params[:id] 
     end
 
     def find_todo_list
-        @todo_list = TodoList.find params[:todo_list_id]
+         @todo_list = TodoList.find_by_id params[:id]
     end
 
     def find_todo_item

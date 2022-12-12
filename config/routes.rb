@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       resources :transportations
       resources :accommodations
       resources :todo_lists do
-        resources :todo_items
+        resources :todo_items, shallow: true
       end
      end
 
