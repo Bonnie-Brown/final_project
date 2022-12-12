@@ -1,10 +1,56 @@
-<%= form_with(model:[@trip, @accommodation]) do |form| %>
+<div class = "form">
+    <%= form_with(model:[@trip, @accommodation]) do |form| %>
 
-<div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+        <% if @accommodation.errors.any? %>
+
+            <ul>
+                <% @accommodation.errors.full_messages.each do |message| %>
+
+                    <li> <%= message %> </li>
+
+                <% end %>
+
+            </ul>
+
+        <% end %>
+
+        <div class="class=mb-3">
+            <%= form.label :name, {class: "form-label"} %>
+            <%= form.text_field :name, {class: "form-control"} %>
+        </div>
+        <div class="class=mb-3">
+            <%= form.label :address, {class: "form-label"} %>
+            <%= form.text_field :address, {class: "form-control"} %>
+        </div>
+        <div class="class=mb-3">
+            <%= form.label :phone, {class: "form-label"} %>
+            <%= form.text_field :phone, {class: "form-control"} %>
+        </div>
+        <div class="class=mb-3">
+            <%= form.label :email, {class: "form-label"} %>
+            <%= form.text_field :email, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <%= form.label :check_in_date, {class: "form-label"} %>
+            <%= form.date_select :check_in_date, {class: "form-control"} %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :check_out_date, {class: "form-label"} %>
+            <%= form.date_select :check_out_date, {class: "form-control"} %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :check_out_time, {class: "form-label"} %>
+            <%= form.time_select :check_out_time, {class: "form-control"} %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :note, {class: "form-label"} %>
+            <%= form.text_area :note, {class: "form-control"} %>
+        </div>
+
+        <%= form.submit class:"btn btn-outline-primary" %>
+
+    <% end %>
 </div>
-
-<%= form.submit class:"btn btn-outline-primary" %>
-
-<% end %>

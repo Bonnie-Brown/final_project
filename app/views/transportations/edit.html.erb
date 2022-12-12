@@ -1,1 +1,35 @@
-<%= render "form" %>
+
+
+<div class = "form">
+    <%= form_with(model: [@trip, @transportation]) do |form| %>
+
+
+        <div class="class=mb-3">
+            <%= form.label :company_name, {class: "form-label"} %>
+            <br>
+            <%= form.text_field :company_name, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <%= form.label :departure_date, {class: "form-label"} %>
+            <%= form.date_select :departure_date, {class: "form-control"} %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :check_in_time, {class: "form-label"} %>
+            <%= form.time_select :check_in_time, {class: "form-control"} %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :arrival_time, {class: "form-label"} %>
+            <%= form.time_select :arrival_time, {class: "form-control"} %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :note, {class: "form-label"} %>
+            <%= form.text_area :note, {class: "form-control"} %>
+        </div>
+
+        <%= form.submit class:"btn btn-outline-primary" %>
+
+    <% end %>
+</div>

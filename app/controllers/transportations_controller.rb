@@ -1,6 +1,6 @@
 class TransportationsController < ApplicationController
     before_action :find_trip
-    before_action :find_transportation, only: [:show, :update, :destroy]
+    before_action :find_transportation, only: [:show, :edit, :update,:destroy]
     
     before_action :authenticate_user!
 
@@ -30,18 +30,28 @@ class TransportationsController < ApplicationController
     end
 
    def show
+
    end
 
    # Update
 
    def edit
+    p '**************'
+    p 'transportation controller edit'
+    p @transportation
+    p '**************'
    end
 
    def update
 
+    p '**************'
+    p 'transportation controller update'
+    p '**************'
+
+
         if @transportation.update(transportation_params)
             flash[:success] = "Successfully updated!"
-            redirect_to @transportation
+            redirect_to trip_transportation_path
         else
             flash[:error] = "Something went wrong"
             render 'edit'
@@ -65,7 +75,11 @@ class TransportationsController < ApplicationController
     end
 
     def find_transportation
-         @transportation = Transportation.find_by_id params[:id]
+        @transportation = Transportation.find params[:id]
+        p '**************'
+        p 'transportation controller find'
+        p @transportation
+        p '**************'
     end
 
     def transportation_params

@@ -11,7 +11,9 @@
         <div class="card-body">
        
           <h5 class="card-title"><%= accommodation.name %></h5>
-          <%= link_to 'View', [@trip, accommodation]%>
+          <p class="card-title"><%= accommodation.address %></p>
+          <p class="card-title">From <%= accommodation.check_in_date%> to <%= accommodation.check_out_date%></p>
+          <%= link_to 'View', [accommodation]%>
         </div>
       </div>
 

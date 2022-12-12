@@ -1,9 +1,9 @@
 class AccommodationsController < ApplicationController
 
-    before_action :find_trip
-    before_action :find_accommodation, only: [:show, :update, :destroy]
     
-    before_action :authenticate_user!
+    before_action :find_accommodation, only: [:show, :update, :destroy]
+    # before_action :find_trip
+    # before_action :authenticate_user!
 
    #Create
 
@@ -34,8 +34,6 @@ class AccommodationsController < ApplicationController
    end
 
    def show
-
-    # @trip = @accommodation.trip
    
    end
 
@@ -43,10 +41,13 @@ class AccommodationsController < ApplicationController
    end
 
    def update
+
+      @accommodation.trip = @trip
+      @accommodation.user = current_user
   
         if @accommodation.update(accommodation_params)
             flash[:success] = "Successfully updated!"
-            redirect_to @accommodation
+            redirect_to accommodation_path(@accommodation)
         else
             flash[:error] = "Something went wrong"
             render 'edit'
@@ -64,14 +65,18 @@ class AccommodationsController < ApplicationController
 
    end
 
-       private
+    private
 
     def find_trip
-        @trip = Trip.find params[:trip_id] 
+        p '******'
+        p @accommodation
+        @trip = Trip.find @accommodation.trip_id
+
     end
 
     def find_accommodation
-         @accommodation = Accommodation.find_by_id params[:id]
+         @accommodation = Accommodation.find params[:id]
+
     end
 
 
