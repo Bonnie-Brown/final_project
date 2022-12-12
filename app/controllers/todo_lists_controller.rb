@@ -64,7 +64,7 @@ class TodoListsController < ApplicationController
     private
 
     def find_trip
-        @trip = Trip.find_by_id params[:id] 
+        @trip = Trip.find params[:trip_id] 
 
     end
 

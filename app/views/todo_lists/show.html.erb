@@ -44,7 +44,7 @@
 <div>
     <%= todo_item.description %> 
     
-    <%= button_to 'Delete', todo_item_path(@todo_list, @todo_item), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-outline-danger" %>
+    <%= button_to 'Delete', trip_todo_list_todo_item_path(@trip, @todo_list), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-outline-danger" %>
 </div>
 <br>
 
