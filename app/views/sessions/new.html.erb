@@ -1,25 +1,36 @@
-<h1> Sign In </h1>
+<header class = 'sign_in_header'>
+<h1> Welcome to Roam </h1>
+<br>
+<h5>Let's get you signed in.</h5>
+</header>
 
-<%= form_with url: session_path do |form| %>
+<div class = 'sign_in_form'>
+      <%= form_with url: session_path do |form| %>
 
-<form>
-  <div class="mb-3">
-        <%= form.label :email %>
-        <br>
-        <%= form.text_field :email %>
-  </div>
+      <form>
+            <div class="mb-3">
+                  <%= form.label :email %>
+                  <br>
+                  <%= form.text_field :email %>
+            </div>
 
-  <div class="mb-3">
-        <%= form.label :password %>
-        <br>
-        <%= form.password_field :password %>
-  </div>
+            <div class="mb-3">
+                   <%= form.label :password %>
+                  <br>
+                  <%= form.password_field :password %>
+            </div>
   
    
-    <%= form.submit "Sign In", class: "btn btn-primary" %>
+      <%= form.submit "Sign In", class: "btn btn-dark" %>
    
 
-</form>
+      </form>
   
-<% end %>
+      <% end %>
+</div>
+
+<div class = 'sign_up_link'>
+<h5> New around here?</h5>
+<%= link_to 'Create an Account', new_user_path, class: "btn btn-dark" %>
+</div>
   

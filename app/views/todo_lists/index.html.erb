@@ -10,6 +10,10 @@
           <h5 class="card-title"><%= todo_list.description %>
             <h6><span class="badge bg-<%= todo_list.badge_color %>"><%= todo_list.status %></span></h6>
           </h5>
+
+          <div class="progress mb-4">
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-label="Success striped example" style="width: <%=todo_list.percent_complete%>%" aria-valuenow="<%=todo_list.percent_complete%>%" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
           <%= link_to 'View', [@trip, todo_list]%>
         </div>
       </div>
