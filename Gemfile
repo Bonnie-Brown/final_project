@@ -33,7 +33,7 @@ gem 'nested_scaffold'
 
 
 # Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 4.0"
+gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -52,9 +52,9 @@ gem "sassc-rails"
 
 gem "cancancan"
 
-gem 'fullcalendar-rails', '~> 3.9'
+gem "hotwire-rails", "~> 0.1.3"
 
-gem 'momentjs-rails', '~> 2.29', '>= 2.29.4.1'
+gem "webpacker", "~> 5.4.3"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -81,3 +81,7 @@ end
 
 
 
+
+
+
+gem "stimulus_reflex", "~> 3.4"

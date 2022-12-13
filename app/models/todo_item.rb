@@ -5,5 +5,9 @@ class TodoItem < ApplicationRecord
   scope :completed, -> do
     where(completed: true)
   end
+
+  
+
+  
   
 end

@@ -33,6 +33,13 @@ class TodoItemsController < ApplicationController
     end
 
     def update
+        if @todo_item.update(todo_item_params)
+            flash[:success] = 'List updated!'
+            redirect_to trip_todo_list_path(@trip, @todo_list)
+        else
+            flash[:error] = "Something went wrong"
+            render 'edit'
+        end
     end
 
     # Destroy
