@@ -10,7 +10,7 @@ class TodoItemReflex < ApplicationReflex
 
   def mark_complete
     todo_item = TodoItem.find(element.dataset.id)
-     todo_item.update(completed: false)
+    todo_item.update(completed: false)
   end
 
 end
