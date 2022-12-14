@@ -1,52 +1,58 @@
-<h1> Update Your Profile </h1>
+<header class = 'update_profile_header'>
+<h2> Update Your Profile </h2>
+</header>
 
-<% if @user.errors.any? %>
-    <p> <%= @user.errors.full_messages.join(',') %> </p>
-<% end %>
+<div class = 'form'>
+      <% if @user.errors.any? %>
+            <p> <%= @user.errors.full_messages.join(',') %> </p>
+      <% end %>
 
-<%= form_with model: @user do |form| %>
+      <%= form_with model: @user do |form| %>
 
-<form>
-  <div class="mb-3">
-        <%= form.label :first_name %>
-        <br>
-        <%= form.text_field :first_name, placeholder: current_user.first_name %>
-  </div>
+      <form>
+            <div class="mb-3">
+                  <%= form.label :first_name, 'First Name', {class: "form-label"} %>
+                  <br>
+                  <%= form.text_field :first_name, {class: "form-control"} %>
+            </div>
 
-  <div class="mb-3">
-        <%= form.label :last_name %>
-        <br>
-        <%= form.text_field :last_name, placeholder: current_user.last_name %>
-  </div>
+            <div class="mb-3">
+                  <%= form.label :last_name, 'Last Name', {class: "form-label"} %>
+                  <br>
+                  <%= form.text_field :last_name, {class: "form-control"}  %>
+            </div>
 
-  <div class="mb-3">
-        <%= form.label :email %>
-        <br>
-        <%= form.text_field :email, placeholder: current_user.email %>
-  </div>
+            <div class="mb-3">
+                  <%= form.label :email, 'Email',{class: "form-label"} %>
+                  <br>
+                  <%= form.text_field :email, {class: "form-control"} %>
+            </div>
 
-  <div class="mb-3">
+            <div class="mb-3">
 
-        <%= form.label :current_password %>
-        <br>
-        <%= form.password_field :current_password %>
-  </div>
+                  <%= form.label :current_password, 'Current Password', {class: "form-label"} %>
+                  <br>
+                  <%= form.password_field :current_password, {class: "form-control"} %>
+            </div>
 
-  <div class="mb-3">
-        <%= form.label :new_password %>
-        <br>
-        <%= form.password_field :new_password %>
-  </div>
+            <div class="mb-3">
+                  <%= form.label :new_password, 'New Password', {class: "form-label"} %>
+                  <br>
+                  <%= form.password_field :new_password, {class: "form-control"} %>
+            </div>
         
-  <div class="mb-3">
-        <%= form.label :new_password_confirmation %>
-        <br>
-        <%= form.password_field :new_password_confirmation %>
-  </div>
+            <div class="mb-3">
+                  <%= form.label :new_password_confirmation, 'Password Confirmation', {class: "form-label"} %>
+                  <br>
+                  <%= form.password_field :new_password_confirmation, {class: "form-control"} %>
+            </div>
 
-  <br>
+            <br>
 
-  <%= form.submit "Update", method: :patch, class:"btn btn-outline-primary" %>
+            <%= form.submit "Update", method: :patch, class:"btn btn-dark" %>
 
-  <% end %>
+      <% end %>
+</div>
+
+
 

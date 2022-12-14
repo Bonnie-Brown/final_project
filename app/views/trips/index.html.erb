@@ -1,4 +1,4 @@
-
+<% if @trips.length > 0 %>
   <div>
     <% @trips.each do |trip| %>
 
@@ -17,6 +17,15 @@
       </div>
     <% end %>
   </div>
+
+  <%else%>
+
+    <div class = 'empty_trip_index'>
+      <h5>Not trips have been added yet.</h5>
+      <%= link_to "Let's get started", new_trip_path %>
+    </div>
+
+  <%end%>
 
 
 

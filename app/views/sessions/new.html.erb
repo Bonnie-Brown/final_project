@@ -8,6 +8,7 @@
       <%= form_with url: session_path do |form| %>
 
       <form>
+            
             <div class="mb-3">
                   <%= form.label :email %>
                   <br>
@@ -19,6 +20,8 @@
                   <br>
                   <%= form.password_field :password %>
             </div>
+
+            <br>
   
    
       <%= form.submit "Sign In", class: "btn btn-dark" %>
@@ -31,6 +34,7 @@
 
 <div class = 'sign_up_link'>
 <h5> New around here?</h5>
+<br>
 <%= link_to 'Create an Account', new_user_path, class: "btn btn-dark" %>
 </div>
   

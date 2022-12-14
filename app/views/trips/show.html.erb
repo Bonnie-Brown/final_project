@@ -1,32 +1,33 @@
 <%= stylesheet_link_tag "trip_show_page", "data-turbo-track": "reload" %>
+<body style = "background-image: url(<%= @trip.image_url%>)">
 
 <div class="card mx-auto" style="width: 80vw; height:80vh">
   <div class="card-body">
     <div class="card-title"><h1 ><%= @trip.name %></h1></div>
     <div class="card-subtitle mb-2 text-muted"><h4><%= @trip.destination %></h4></div>
     <p class="card-text"><%= @trip.departure_date.strftime("%B, %d, %Y")%> to <%=@trip.return_date.strftime("%B, %d, %Y")%></p>
-    <p class="card-text">Created by: <%= @trip.user.first_name%></p>
+    
+ 
+   
   
    <div class="d-grid gap-2 col-12 mx-auto">
-      <%= link_to 'Accommodation Details', trip_accommodations_path(@trip), class:"btn btn-secondary" %>
-      <%= link_to 'Transportation Details', trip_transportations_path(@trip), class:"btn btn-secondary" %>
-      <%= link_to 'To-Do Lists', trip_todo_lists_path(@trip), class:"btn btn-secondary" %>
-      
-   </div> 
-
-   <br>
-       <div class="d-flex">
-      <div class="m-1">
-          <%= link_to 'Edit', edit_trip_path(@trip), class:"btn btn-md btn-dark" %>
-      </div>
-      <div class="m-1">
-         <%= button_to 'Delete', trip_path(@trip), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-danger" %>
-      </div>
+      <div class="dropdown-center d-grid gap-2 col-12 mx-auto">
+         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          View Details
+         </button>
+         <ul class="dropdown-menu dropdown-menu-dark ">
+            <li><a class="dropdown-item" href="/trips/<%=@trip.id%>/accommodations">Accommodation Details</a></li>
+            <li><a class="dropdown-item" href="/trips/<%=@trip.id%>/transportations">Transportation Details</a></li>
+         </ul>
    </div>
+      <%= link_to 'To-Do Lists', trip_todo_lists_path(@trip), class:"btn btn-secondary" %> 
+      <%= link_to 'Manage Trip', edit_trip_path(@trip), class:"btn btn-secondary" %> 
+   </div> 
  </div>
 </div>
+</body>
 
-<div id="calendar"></div>
+
 
 
 
