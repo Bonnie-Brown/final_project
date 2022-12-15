@@ -1,4 +1,8 @@
+<% if @todo_lists.length > 0 %>
+
+<header class = 'header'>
 <h1>To Do Lists</h1>
+</header>
 
 <div>
 
@@ -20,9 +24,23 @@
 
  <% end %>
 
-<%= link_to 'New List', new_trip_todo_list_path(@trip), class:"btn btn-dark" %>
+<div class = 'add_button'><%= link_to 'New List', new_trip_todo_list_path(@trip), class:"btn btn-dark" %></div>
 
 </div>
+
+<% else %>
+
+    <header class = 'header'>
+      <h2> To Do Lists </h2>
+    </header>
+    <div class = 'empty_index'>
+      <h5>What do you need to pack?</h5>
+      <h5>Where would you like to visit?</h5>
+      <br>
+      <%= link_to 'Make a List', new_trip_todo_list_path(@trip), class:"btn btn-dark"%>
+    </div>
+
+<% end %>
 
 
 

@@ -27,8 +27,16 @@
             <%= form.date_select :departure_date, {class: "form-control"} %>
         </div>
         <div class="mb-3">
+            <%= form.label :departure_time, {class: "form-label"} %>
+            <%= form.time_select :departure_time, {class: "form-control"} %>
+        </div>
+        <div class="mb-3">
             <%= form.label :check_in_time, {class: "form-label"} %>
             <%= form.time_select :check_in_time, {class: "form-control"} %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :arrival_date, {class: "form-label"} %>
+            <%= form.date_select :arrival_date, {class: "form-control"} %>
         </div>
         <div class="mb-3">
             <%= form.label :arrival_time, {class: "form-label"} %>
@@ -39,7 +47,7 @@
             <%= form.text_area :note, {class: "form-control"} %>
         </div>
 
-        <%= form.submit class:"btn btn-outline-primary" %>
+        <%= form.submit class:"btn btn-dark" %>
 
     <% end %>
 </div>

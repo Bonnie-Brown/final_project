@@ -1,6 +1,12 @@
+<%= stylesheet_link_tag "show_page", "data-turbo-track": "reload" %>
+<body style = "background-image: url(<%= @transportation.trip.image_url%>)">
 
-    <div><h1 ><%= @transportation.company_name %></h1></div>
-
-    <%= link_to 'Edit', edit_trip_transportation_path(@trip, @transportation), class:"btn btn-outline-primary" %>
-     <%= button_to 'Delete', trip_transportation_path(@trip, @transportation), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-outline-danger" %>
-   </div>
+<div class="card mx-auto" style="width: 70vw; height:70vh">
+  <div class="card-body">
+    <div class="card-title"><h1 ><%= @transportation.company_name %></h1></div>
+    
+   <div class="d-grid gap-3 col-12 mx-auto">
+      <%= link_to 'Manage Transportation', edit_trip_transportation_path(@trip, @transportation), class:"btn btn-dark" %> 
+   </div> 
+ </div>
+</div>

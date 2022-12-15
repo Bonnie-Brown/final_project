@@ -42,6 +42,10 @@
             <%= form.date_select :check_out_date, {class: "form-control"} %>
         </div>
         <div class="mb-3">
+            <%= form.label :check_in_time, {class: "form-label"} %>
+            <%= form.time_select :check_in_time, {class: "form-control"} %>
+        </div>
+        <div class="mb-3">
             <%= form.label :check_out_time, {class: "form-label"} %>
             <%= form.time_select :check_out_time, {class: "form-control"} %>
         </div>

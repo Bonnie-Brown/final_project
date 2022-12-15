@@ -33,15 +33,17 @@
         <%= form.date_select :check_out_date, {class: "form-control"} %>
     </div>
     <div class="mb-3">
-        <%= form.label :check_out_time, {class: "form-label"} %>
-        <%= form.time_select :check_out_time, {class: "form-control"} %>
+            <%= form.label :check_in_time, {class: "form-label"} %>
+            <%= form.time_select :check_in_time, {class: "form-control"} %>
+             <%= form.label :check_out_time, {class: "form-label"} %>
+            <%= form.time_select :check_out_time, {class: "form-control"} %>
     </div>
     <div class="mb-3">
         <%= form.label :note, {class: "form-label"} %>
         <%= form.text_area :note, {class: "form-control"} %>
     </div>
 
-    <%= form.submit class:"btn btn-outline-primary" %>
-
+    <%= form.submit class:"btn btn-dark" %>
+   <%= button_to 'Delete', trip_accommodation_path(@trip, @accommodation), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-danger" %>
  <% end %>
 </div>

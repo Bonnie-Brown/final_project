@@ -1,22 +1,41 @@
-<h1>Accommodations</h1>
+<% if @accommodations.length > 0 %>
 
-<div>
-
- <% @accommodations.each do |accommodation| %>
-      <div class="card mx-auto text-center index" style = "width: 40vw;">
-      
-        <div class="card-body">
-       
-          <h5 class="card-title"><%= accommodation.name %></h5>
-          <p class="card-title"><%= accommodation.address %></p>
-          <p class="card-title">From <%= accommodation.check_in_date%> to <%= accommodation.check_out_date%></p>
-          <%= link_to 'View', [@trip, accommodation]%>
+    <header class = 'header'>
+    <h2>Accommodation Details for <%= @trip.name %> 
+   </header>
+  <div>
+  <% @accommodations.each do |accommodation| %>
+        <div class="card mx-auto text-center index" style = "width: 40vw; height: 40vh">
+        
+          <div class="card-body">
+        
+            <h4 class="card-title"><%= accommodation.name %></h4>
+            <p class="card-title"><%= accommodation.address %></p>
+            <b class="card-title">Check in:</b>
+            <p class="card-title"><%= accommodation.check_in_date.strftime("%B, %d, %Y")%> at <%= accommodation.check_in_time.time.to_fs(:time)%></p>
+            <b class="card-title">Check out:</b>
+            <p class="card-title"><%= accommodation.check_out_date.strftime("%B, %d, %Y")%> at at <%= accommodation.check_out_time.time.to_fs(:time)%></p>
+            <%= link_to 'View', [@trip, accommodation], class:"btn btn-dark"%>
+          </div>
         </div>
-      </div>
 
-        <% end %>
+          <% end %>
 
-<%= link_to 'Add Accommodation', new_trip_accommodation_path(@trip), class:"btn btn-dark" %>
+  <div class = 'add_button'><%= link_to 'Add Accommodation', new_trip_accommodation_path(@trip), class:"btn btn-dark" %></div>
 
-</div>
+  </div>
+
+
+<% else %>
+
+    <header class = 'header'>
+      <h2>Accommodation Details for <%= @trip.name %> </h2>
+    </header>
+    <div class = 'empty_index'>
+      <h5>Where will you be staying?</h5>
+      <br>
+      <%= link_to 'Add Accommodation', new_trip_accommodation_path(@trip), class:"btn btn-dark" %> 
+    </div>
+
+<% end %>
 

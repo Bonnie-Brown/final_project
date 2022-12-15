@@ -6,13 +6,19 @@
         <% if trip.image_url%>
           
             <%= image_tag trip.image_url, class:"card-img-top" %>
+
+        <% else %>
+
+         <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80" class="card-img-top" alt="...">
+
+         
           
         <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= trip.name %></h5>
           <p class="card-text"><%= trip.destination %></p>
           <p><%= trip.departure_date.strftime("%B, %d, %Y") %> to <%=trip.return_date.strftime("%B, %d, %Y")%></p>
-          <%= link_to 'View', trip_path(trip) %>
+          <%= link_to 'View', trip_path(trip), class:"btn btn-dark" %>
         </div>
       </div>
     <% end %>
@@ -20,9 +26,10 @@
 
   <%else%>
 
-    <div class = 'empty_trip_index'>
+    <div class = 'empty_index'>
       <h5>Not trips have been added yet.</h5>
-      <%= link_to "Let's get started", new_trip_path %>
+      <br>
+      <%= link_to "Let's get started", new_trip_path, class:"btn btn-dark" %>
     </div>
 
   <%end%>
