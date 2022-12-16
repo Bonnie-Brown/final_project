@@ -63,6 +63,8 @@ end
                     company_name: Faker::Lorem.sentence(word_count: 2),
                     trip: t,
                     user: users.sample,
+                    departure_date: departure_date,
+                    arrival_date: return_date,
                     created_at: created_at,
                     updated_at: created_at
                 )

@@ -1,23 +1,21 @@
 <% if @transportations.length > 0 %>
+<body style = "background-image: url(<%= @trip.image_url%>); background-repeat:no-repeat;background-position: center; background-size:cover; height: 100vh">
 
-<header class = 'header'>
-<h2>Transportation Details</h2>
-</header>
 
 <div>
 
  <% @transportations.each do |transportation| %>
-      <div class="card mx-auto text-center index" style = "width: 40vw; height: 40vh">
+      <div class="card mx-auto text-center index" style = "width: 40vw;">
       
         <div class="card-body">
        
           <h5 class="card-title"><%= transportation.company_name %></h5>
           <b class="card-title">Check in:</b>
-          <p class="card-title"><%= transportation.departure_date.strftime("%B, %d, %Y") %> at  <%= transportation.check_in_time.time.to_fs(:time)%></p>
+          <p class="card-title"><%= transportation.departure_date %> at  <%= transportation.check_in_time%></p>
           <b class="card-title">Departure:</b>
           <p class="card-title"> <%=transportation.departure_time%></p>
           <b class="card-title">Arrival:</b>
-          <p class="card-title"><%=transportation.arrival_date%> at <%=transportation.arrival_time.time.to_fs(:time)%></p>
+          <p class="card-title"><%=transportation.arrival_date%> at <%=transportation.arrival_time%></p>
           
           
 
@@ -29,7 +27,8 @@
 
 <div class = 'add_button'><%= link_to 'Add Transportation', new_trip_transportation_path(@trip), class:"btn btn-dark" %></div>
 
-</div>
+</div>  
+</body>
 
 <% else %>
 

@@ -1,20 +1,20 @@
 <% if @accommodations.length > 0 %>
+<body style = "background-image: url(<%= @trip.image_url%>); background-repeat:no-repeat;background-position: center; background-size:cover; height: 100vh">
 
-    <header class = 'header'>
-    <h2>Accommodation Details for <%= @trip.name %> 
-   </header>
   <div>
   <% @accommodations.each do |accommodation| %>
-        <div class="card mx-auto text-center index" style = "width: 40vw; height: 40vh">
+        <div class="card mx-auto text-center index" style = "width: 40vw;">
         
           <div class="card-body">
         
             <h4 class="card-title"><%= accommodation.name %></h4>
-            <p class="card-title"><%= accommodation.address %></p>
-            <b class="card-title">Check in:</b>
-            <p class="card-title"><%= accommodation.check_in_date.strftime("%B, %d, %Y")%> at <%= accommodation.check_in_time.time.to_fs(:time)%></p>
-            <b class="card-title">Check out:</b>
-            <p class="card-title"><%= accommodation.check_out_date.strftime("%B, %d, %Y")%> at at <%= accommodation.check_out_time.time.to_fs(:time)%></p>
+            <br>
+            <h5 class="card-subtitle mb-2 text-muted">Check in:</h5>
+            <p class="card-title"><%= accommodation.check_in_date%> at <%= accommodation.check_in_time%></p>
+            <br>
+            <h5 class="card-subtitle mb-2 text-muted">Check out:</h5>
+            <p class="card-title"><%= accommodation.check_out_date%> at at <%= accommodation.check_out_time%></p>
+            <br>
             <%= link_to 'View', [@trip, accommodation], class:"btn btn-dark"%>
           </div>
         </div>
@@ -24,6 +24,8 @@
   <div class = 'add_button'><%= link_to 'Add Accommodation', new_trip_accommodation_path(@trip), class:"btn btn-dark" %></div>
 
   </div>
+
+  </body>
 
 
 <% else %>

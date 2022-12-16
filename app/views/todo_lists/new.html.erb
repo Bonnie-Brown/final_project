@@ -1,12 +1,15 @@
-<h1>New List</h1>
+<header class = 'header'>
+    <h2>New List</h2>
+</header>
 
  <%= form_with(model:[@trip, @todo_list]) do |form| %>
-    <div>
+    <div class = 'sign_in_form'>
+    <div class="class=mb-3">
         <% form.label :description%>
         <%= form.text_area :description, placeholder: "What's this list for?"%> 
     </div>
     <br>
     <br>
-    <%= form.submit "Submit", class:"btn btn-outline-primary" %>
-
+    <%= form.submit "Submit", class:"btn btn-dark" %>
+    </div>
  <% end %>
