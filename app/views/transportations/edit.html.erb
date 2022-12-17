@@ -1,5 +1,5 @@
 <header class = 'header'>
-    <h2>Update Accommodation</h2>
+    <h2>Update Transportation</h2>
 </header>
 
 <div class = "form">
@@ -14,20 +14,17 @@
 
         <br>
         <div class="mb-3">
-            <%= form.label :departure_date, {class: "form-label"} %>
-            <%= form.date_select :departure_date, {class: "form-control"} %>
+            <%= form.label :departure, {class: "form-label"} %>
+            <%= form.datetime_select :departure, {class: "form-control"} %>
         </div>
-        <div class="mb-3">
-            <%= form.label :departure_time, {class: "form-label"} %>
-            <%= form.time_select :departure_time, {class: "form-control"} %>
-        </div>
+  
         <div class="mb-3">
             <%= form.label :check_in_time, {class: "form-label"} %>
             <%= form.time_select :check_in_time, {class: "form-control"} %>
         </div>
         <div class="mb-3">
-            <%= form.label :arrival_date, {class: "form-label"} %>
-            <%= form.date_select :arrival_date, {class: "form-control"} %>
+            <%= form.label :arrival, {class: "form-label"} %>
+            <%= form.datetime_select :arrival, {class: "form-control"} %>
         </div>
         <div class="mb-3">
             <%= form.label :arrival_time, {class: "form-label"} %>
@@ -38,7 +35,14 @@
             <%= form.text_area :note, {class: "form-control"} %>
         </div>
 
+    
+<div class="d-flex">
+    <div class="m-1">
         <%= form.submit class:"btn btn-dark" %>
-        <%= button_to 'Delete', trip_transportation_path(@trip, @transportation), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-danger" %>
     <% end %>
+    </div>
+    <div class="m-1">
+        <%= button_to 'Delete', trip_transportation_path(@trip, @transportation), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-danger" %>
+    
+    </div>
 </div>

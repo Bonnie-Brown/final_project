@@ -1,9 +1,9 @@
 <% if @accommodations.length > 0 %>
-<body style = "background-image: url(<%= @trip.image_url%>); background-repeat:no-repeat;background-position: center; background-size:cover; height: 100vh">
+<body style = "background-image: url(<%= @trip.image_url%>); background-repeat: repeat-y;background-position: center; background-size:cover; height: 100vh">
 
   <div>
   <% @accommodations.each do |accommodation| %>
-        <div class="card mx-auto text-center index" style = "width: 40vw;">
+        <div class="card mx-auto text-center index border-dark" style = "width: 40vw;">
         
           <div class="card-body">
         

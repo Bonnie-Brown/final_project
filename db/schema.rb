@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_15_200847) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_17_005013) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,15 +56,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_200847) do
   create_table "transportations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "company_name"
-    t.date "departure_date"
+    t.datetime "departure"
     t.time "check_in_time"
-    t.time "arrival_time"
+    t.datetime "arrival"
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "trip_id", null: false
-    t.date "arrival_date"
-    t.time "departure_time"
     t.index ["trip_id"], name: "index_transportations_on_trip_id"
     t.index ["user_id"], name: "index_transportations_on_user_id"
   end
@@ -76,7 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_15_200847) do
     t.datetime "updated_at", null: false
     t.date "departure_date"
     t.date "return_date"
-    t.text "image_url"
+    t.text "image_url", default: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80"
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_trips_on_user_id"
   end

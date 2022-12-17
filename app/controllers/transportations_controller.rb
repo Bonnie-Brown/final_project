@@ -70,7 +70,7 @@ class TransportationsController < ApplicationController
     end
 
     def transportation_params
-        params.require(:transportation).permit(:company_name, :departure_date, :check_in_time, :arrival_time, :note)
+        params.require(:transportation).permit(:company_name, :departure, :check_in_time, :arrival, :note)
     end
 
 end

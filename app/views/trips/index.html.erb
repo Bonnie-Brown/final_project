@@ -2,7 +2,7 @@
   <div>
     <% @trips.each do |trip| %>
 
-      <div class="card mx-auto text-center index" style = "width: 40vw;">
+      <div class="card mx-auto text-center border-dark index" style = "width: 40vw;">
         <% if trip.image_url%>
           
             <%= image_tag trip.image_url, class:"card-img-top" %>
@@ -16,6 +16,7 @@
         </div>
       </div>
     <% end %>
+     <div class = 'add_button'><%= link_to 'New Trip', new_trip_path, class:"btn btn-dark" %></div>
   </div>
 
   <%else%>

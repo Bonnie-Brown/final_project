@@ -7,7 +7,7 @@
 <div>
 
  <% @todo_lists.each do |todo_list| %>
-      <div class="card mx-auto text-center index" style = "width: 40vw;">
+      <div class="card mx-auto text-center index border-dark" style = "width: 40vw;">
       
         <div class="card-body">
        
@@ -18,7 +18,7 @@
           <div class="progress mb-4">
               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-label="Success striped example" style="width: <%=todo_list.percent_complete%>%" aria-valuenow="<%=todo_list.percent_complete%>%" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-          <%= link_to 'View', [@trip, todo_list]%>
+          <%= link_to 'View', [@trip, todo_list], class: 'btn btn-outline-dark'%>
         </div>
       </div>
 
