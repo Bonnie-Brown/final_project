@@ -1,5 +1,5 @@
 <% if @accommodations.length > 0 %>
-<body style = "background-image: url(<%= @trip.image_url%>); background-repeat: repeat-y;background-position: center; background-size:cover; height: 100vh">
+<body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image'>
 
   <div>
   <% @accommodations.each do |accommodation| %>

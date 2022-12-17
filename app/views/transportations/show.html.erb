@@ -1,8 +1,8 @@
 <%= stylesheet_link_tag "show_page", "data-turbo-track": "reload" %>
 <body style = "background-image: url(<%= @transportation.trip.image_url%>); background-repeat:no-repeat;background-position: center; background-size:cover; height: 100vh">
 
-<div class="card mx-auto text-center border-dark" style="width: 50vw; height:70vh">
-  <div class="card-body">
+<div class="container text-center">
+  <div class="row">
     <div class="card-title"><h4 ><%= @transportation.company_name %></h4></div>
     <div class="card-text mb-2 text-muted"><h5>Check In</h5></div>
     <p class="card-text"><%=@transportation.check_in_time%> </p>
@@ -13,7 +13,7 @@
     <div class="card-text mb-2 text-muted"><h5>Notes</h5></div>
     <p class="card-text"><%=@transportation.note%> </p>
     
-   <div class="d-grid gap-3 col-12 mx-auto">
+   <div>
       <%= link_to 'Manage Transportation', edit_trip_transportation_path(@trip, @transportation), class:"btn btn-dark" %> 
    </div> 
  </div>

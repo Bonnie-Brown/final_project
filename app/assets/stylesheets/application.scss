@@ -79,6 +79,31 @@ body{
 }
 
 
+.row{
+   
+    background-color: white;
+    border: solid black;
+    margin-top: 10vh;
+    margin-left: 10vh;
+    margin-right: 10vh;
+    margin-bottom: 5vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    padding-bottom: 2vh;
+    word-break: break-word;
+
+}
+
+.background-image{
+    background-repeat: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+
 
 
 
