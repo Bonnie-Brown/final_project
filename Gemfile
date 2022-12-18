@@ -29,7 +29,11 @@ gem "jbuilder"
 
 gem 'nested_scaffold'
 
+gem 'geocoder'
 
+gem 'gmaps4rails'
+
+gem 'underscore-rails'
 
 
 # Use Redis adapter to run Action Cable in production

@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag "list_show_page", "data-turbo-track": "reload" %>
-  <body class = 'bg-light'>
+  <body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image' >
     <div class = 'container'>
-      <div class = 'row'>
+      <div class = 'list-row'>
         <div class = 'col-md-10 col-lg-8 offset-md-1 offset-lg-2'>
           <div class = 'card mt-5'>
             <div class = "card-header d-flex justify-content-between">

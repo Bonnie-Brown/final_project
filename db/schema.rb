@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_17_005013) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_17_234732) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_005013) do
     t.date "check_out_date"
     t.time "check_in_time"
     t.time "check_out_time"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["trip_id"], name: "index_accommodations_on_trip_id"
     t.index ["user_id"], name: "index_accommodations_on_user_id"
   end
@@ -59,10 +61,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_005013) do
     t.datetime "departure"
     t.time "check_in_time"
     t.datetime "arrival"
+    t.string "address"
     t.text "note"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "trip_id", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["trip_id"], name: "index_transportations_on_trip_id"
     t.index ["user_id"], name: "index_transportations_on_user_id"
   end

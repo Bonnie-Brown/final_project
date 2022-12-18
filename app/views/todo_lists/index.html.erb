@@ -1,9 +1,5 @@
 <% if @todo_lists.length > 0 %>
-
-<header class = 'header'>
-<h1>To Do Lists</h1>
-</header>
-
+<body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image'>
 <div>
 
  <% @todo_lists.each do |todo_list| %>
@@ -27,6 +23,7 @@
 <div class = 'add_button'><%= link_to 'New List', new_trip_todo_list_path(@trip), class:"btn btn-dark" %></div>
 
 </div>
+</body>
 
 <% else %>
 
