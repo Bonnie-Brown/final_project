@@ -35,6 +35,8 @@ gem 'gmaps4rails'
 
 gem 'underscore-rails'
 
+gem 'simple_calendar', '~> 2.4', '>= 2.4.3'
+
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"

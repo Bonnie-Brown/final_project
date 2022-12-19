@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
+  resource :calendar, only: [:show]
 
   get "password", to: "passwords#edit"
   patch "password", to: "passwords#update"
