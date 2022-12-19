@@ -1,5 +1,6 @@
 <div class = 'container mt-5 text-center'>
     <h1>My Calendar</h1>
+    <br>
     <%= month_calendar(events: @trips) do |date, trips| %>
         <div class = 'day'>
             <%= date.day %>
@@ -7,10 +8,8 @@
         <% trips.each do |trip|%>
 
         <%if trip.user_id == @current_user.id %>
-            <div class = 'card-header'>
-                <div class = 'card-title'>
+            <div> 
                     <%= link_to trip.name, trip %>
-                </div>
             </div>
             <% end %>
         <% end %>

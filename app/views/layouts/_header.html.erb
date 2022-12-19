@@ -1,6 +1,6 @@
-<nav class="navbar navbar-dark sticky-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Roam</a>
+    <a class="navbar-brand" href="/">Roam </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,15 +9,13 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
-         <% if(current_user.present?)%>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/trips">View All</a>
-          </li>
+         <% if(current_user.present?)%>  
+ 
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/trips/new">New</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/calendar">My Calendar</a>
+            <a class="nav-link active" aria-current="page" href="/calendar">Calendar</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/users/<%=current_user.id%>/edit">My Profile</a>
@@ -26,7 +24,7 @@
             <a><%#= link_to 'Profile', edit_user_path(current_user)%></a>
           </li>
           <li class="nav-item">
-            <%= button_to 'Sign Out', session_path, method: :delete %>
+            <a><%= button_to 'Sign Out', session_path, method: :delete, class: 'btn btn-dark' %></a>
           </li>
          <% else %>
          <li class="nav-item">
