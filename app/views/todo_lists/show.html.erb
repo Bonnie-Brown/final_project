@@ -11,10 +11,10 @@
               </div>
               <div class="d-flex">
                 <div class="m-1">
-                  <%= link_to 'Edit List', edit_trip_todo_list_path(@trip, @todo_list), class:"btn btn-outline-dark" %>
+                  <%= link_to 'Edit', edit_trip_todo_list_path(@trip, @todo_list), class:"btn btn-dark" %>
                 </div>
                 <div class="m-1">
-                  <%= button_to 'Delete List', trip_todo_list_path(@trip, @todo_list), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-outline-danger" %>
+                  <%= button_to 'Delete', trip_todo_list_path(@trip, @todo_list), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-danger" %>
                 </div>
               </div>
 
@@ -41,7 +41,7 @@
                         <% form.label :description%>
                         <%= form.text_field :description, class: 'form-control', placeholder: "Add item"%> 
                         <div class = 'input-group-append'>
-                            <%= form.submit "Add", class:"btn btn-outline-dark input-group-btn" %>
+                            <%= form.submit "Add", class:"btn btn-dark input-group-btn" %>
                         </div>
                       </div>
                     <% end %>
@@ -58,11 +58,11 @@
                                           <div class="m-1">
                                               <%= form_with(model: [@trip, @todo_list, todo_item]) do |form| %>
                                                 <%=form.hidden_field :completed, :value => false, method: :patch %>
-                                                <%= form.submit "Mark as Incomplete", class:"btn btn-sm btn-outline-dark input-group-btn", method: :patch %>
+                                                <%= form.submit "↻", class:"btn btn-sm btn-dark input-group-btn", method: :patch %>
                                               <%end%>
                                             </div>
                                             <div class="m-1">
-                                              <%= button_to 'Delete', trip_todo_list_todo_item_path(@trip, @todo_list, todo_item), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-sm btn-outline-danger" %>
+                                              <%= button_to 'X', trip_todo_list_todo_item_path(@trip, @todo_list, todo_item), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-sm btn-danger" %>
                                             </div>
                                         </div>
                                   </div>
@@ -77,11 +77,11 @@
                                           <div class="m-1">
                                             <%= form_with(model: [@trip, @todo_list, todo_item]) do |form| %>
                                                 <%=form.hidden_field :completed, :value => true, method: :patch %>
-                                                <%= form.submit "Mark as Complete", class:"btn btn-sm btn-outline-dark input-group-btn", method: :patch %>
+                                                <%= form.submit "✓", class:"btn btn-sm btn-dark input-group-btn", method: :patch %>
                                             <%end%>
                                           </div>
                                           <div class="m-1">
-                                            <%= button_to 'Delete', trip_todo_list_todo_item_path(@trip, @todo_list, todo_item), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-sm btn-outline-danger" %>
+                                            <%= button_to 'X', trip_todo_list_todo_item_path(@trip, @todo_list, todo_item), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-sm btn-danger" %>
                                           </div>
                                         </div>
                                    </div>

@@ -117,7 +117,30 @@ body{
 
 }
 
+.logo{
+    width:5vw;
 
+}
+
+.btn:hover{
+    background-color: darkseagreen;
+    border: none;
+}
+
+.btn-danger:hover{
+    background-color: red;
+}
+
+a.navbar-brand:hover {
+    color: darkseagreen !important;
+}
+
+a:hover {
+    color: darkseagreen !important;
+}
+
+
+ 
 
 
 

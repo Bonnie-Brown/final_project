@@ -79,7 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_234732) do
     t.datetime "updated_at", null: false
     t.date "departure_date"
     t.date "return_date"
-    t.text "image_url", default: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80"
+    t.text "image_url", default: "https://images.unsplash.com/photo-1452421822248-d4c2b47f0c81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
