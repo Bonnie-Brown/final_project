@@ -6,18 +6,22 @@
     <div class="card-title"><h4 ><%= @transportation.company_name %></h4></div>
     <p class="card-subtitle"><%= @transportation.address %></p>
     <div class="card-text mb-2 text-muted"><h5>Check In</h5></div>
-    <p class="card-text"><%=@transportation.check_in_time%> </p>
+    <p class="card-text"><%=@transportation.check_in_time.strftime("%k:%M %p")%> </p>
     <div class="card-text mb-2 text-muted"><h5>Departure</h5></div>
-    <p class="card-text"><%=@transportation.departure%> </p>
+    <p class="card-text"><%=@transportation.departure.strftime("%B, %d, %Y, %k:%M %p")%> </p>
     <div class="card-text mb-2 text-muted"><h5>Arrival</h5></div>
-    <p class="card-text"><%=@transportation.arrival%> </p>
+    <p class="card-text"><%=@transportation.arrival.strftime("%B, %d, %Y, %k:%M %p")%> </p>
+    <% if @transportation.note.length > 0 %>
     <div class="card-text mb-2 text-muted"><h5>Notes</h5></div>
     <p class="card-text"><%=@transportation.note%> </p>
+    <% end %>
     
    <div>
       <%= link_to 'Manage Transportation', edit_trip_transportation_path(@trip, @transportation), class:"btn btn-dark" %> 
    </div> 
  </div>
+
+  <% if @transportation.latitude && @transportation.longitude%>
   <div class = 'row map' >
  <div id = 'map' style = 'width: 800px; height: 400px;'></div>
 
@@ -45,5 +49,5 @@
 
 </div>
 
-
+<% end %>
 </div>

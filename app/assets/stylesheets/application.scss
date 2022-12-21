@@ -118,13 +118,16 @@ body{
 }
 
 .logo{
-    width:5vw;
+    width:3vw;
+    padding-top: 2vh;
+    padding-bottom: 0px;
 
 }
 
 .btn:hover{
-    background-color: darkseagreen;
+    background-color:goldenrod;
     border: none;
+    
 }
 
 .btn-danger:hover{
@@ -132,15 +135,33 @@ body{
 }
 
 a.navbar-brand:hover {
-    color: darkseagreen !important;
+    color:goldenrod !important;
 }
 
-a:hover {
-    color: darkseagreen !important;
+.nav-link:hover{
+    color: goldenrod !important;
+}
+
+.o{
+    color: goldenrod;
+}
+
+a{
+    color: goldenrod;
+}
+a:hover{
+    color: darkgoldenrod;
+}
+.form-control:focus {
+    border-color: goldenrod;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px goldenrod;
+}
+
+.calendar-heading{
+    padding-bottom: 2vh;
 }
 
 
- 
 
 
 

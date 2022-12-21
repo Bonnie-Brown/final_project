@@ -2,13 +2,13 @@
     <h1>My Calendar</h1>
     <br>
     <%= month_calendar(events: @trips) do |date, trips| %>
-        <div class = 'day'>
+        <div >
             <%= date.day %>
         </div>
         <% trips.each do |trip|%>
 
         <%if trip.user_id == @current_user.id %>
-            <div> 
+            <div class = 'event'> 
                     <%= link_to trip.name, trip %>
             </div>
             <% end %>

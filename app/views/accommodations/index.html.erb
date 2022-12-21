@@ -10,10 +10,10 @@
             <h4 class="card-title"><%= accommodation.name %></h4>
             <br>
             <h5 class="card-subtitle mb-2 text-muted">Check in:</h5>
-            <p class="card-title"><%= accommodation.check_in_date%> at <%= accommodation.check_in_time%></p>
+            <p class="card-title"><%= accommodation.check_in_date.strftime("%B, %d, %Y")%> at <%= accommodation.check_in_time.strftime("%k:%M %p")%></p>
             <br>
             <h5 class="card-subtitle mb-2 text-muted">Check out:</h5>
-            <p class="card-title"><%= accommodation.check_out_date%> at at <%= accommodation.check_out_time%></p>
+            <p class="card-title"><%= accommodation.check_out_date.strftime("%B, %d, %Y")%> at <%= accommodation.check_out_time.strftime("%k:%M %p")%></p>
             <br>
             <%= link_to 'View', [@trip, accommodation], class:"btn btn-dark"%>
           </div>

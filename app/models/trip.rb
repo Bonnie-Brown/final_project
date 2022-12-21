@@ -6,6 +6,11 @@ class Trip < ApplicationRecord
     has_many :todo_lists, dependent: :destroy
     has_many :todo_items, through: :todo_lists
 
+    validates :name, presence: true
+    validates :departure_date, presence: true
+    validates :return_date, presence: true
+    
+
     def start_time
         self.departure_date
     end

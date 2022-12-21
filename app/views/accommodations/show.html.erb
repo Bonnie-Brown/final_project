@@ -6,13 +6,21 @@
     <div class="card-title"><h4 ><%= @accommodation.name %></h4></div>
     <p class="card-subtitle"><%= @accommodation.address %></p>
     <div class="card-text mb-2 text-muted"><h5>Check In</h5></div>
-    <p class="card-text"><%= @accommodation.check_in_date%> at <%= @accommodation.check_in_time%> </p>
+    <p class="card-text"><%= @accommodation.check_in_date.strftime("%B, %d, %Y")%> at <%= @accommodation.check_in_time.strftime("%k:%M %p")%> </p>
     <div class="card-text mb-2 text-muted"><h5>Check Out</h5></div>
-    <p class="card-text"><%= @accommodation.check_out_date%> at <%= @accommodation.check_out_time%> </p>
+    <p class="card-text"><%= @accommodation.check_out_date.strftime("%B, %d, %Y")%> at <%= @accommodation.check_out_time.strftime("%k:%M %p")%> </p>
+    <% if @accommodation.phone.length > 0 || @accommodation.email.length > 0 %>
     <div class="card-text mb-2 text-muted"><h5>Contact Information</h5></div>
-     <p class="card-text">  Phone: <%= @accommodation.phone%>   Email: <%= @accommodation.email%></p>
+    <% end %>
+    <% if @accommodation.phone.length > 0 %>
+     <p class="card-text">  Phone: <%= @accommodation.phone%> <% end %>
+     <% if @accommodation.email.length > 0%>
+    Email: <%= @accommodation.email%></p>
+    <%end%>
+    <% if @accommodation.note.length > 0 %>
     <div class="card-text mb-2 text-muted"><h5>Notes</h5></div>
     <p class="card-subtitle"><%= @accommodation.note %></p>
+    <%end%>
     
     
    <div >
@@ -20,6 +28,7 @@
    </div> 
  </div>
 
+ <% if @accommodation.latitude && @accommodation.longitude%>
  <div class = 'row map' >
  <div id = 'map' style = 'width: 800px; height: 400px;'></div>
 
@@ -46,5 +55,7 @@
 </script>
 
 </div>
+
+<% end %>
 
 </div>
