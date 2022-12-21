@@ -1,6 +1,6 @@
 <% if @transportations.length > 0 %>
 <body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image'>
-
+<%= link_to '←', :back, class: 'btn back' %>
 
 <div>
 
@@ -33,6 +33,7 @@
 
 <% else %>
 
+<%= link_to '←', :back, class: 'btn back' %>
 
     <header class = 'header'>
       <h2>Transportation Details for <%= @trip.name %> </h2>

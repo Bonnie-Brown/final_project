@@ -64,7 +64,7 @@
 }
 
 .index {
-    margin-top: 50px;
+    
     margin-bottom: 50px;
 }
 
@@ -90,7 +90,6 @@ body{
    
     background-color: white;
     border: solid black;
-    margin-top: 5vh;
     margin-left: 10vh;
     margin-right: 10vh;
     margin-bottom: 5vh;
@@ -99,6 +98,16 @@ body{
     padding-bottom: 2vh;
     word-break: break-word;
 
+}
+
+.list-row{
+    margin-top:0vh;
+    margin-bottom: 5vh;
+    padding-bottom: 2vh;
+    word-break: break-word;
+}
+.list-card{
+    margin-top:0vh
 }
 
 
@@ -174,6 +183,10 @@ input:focus{
 .calendar-title{
     padding-left: 1vh;
     padding-right: 1vh;
+}
+
+.back{
+    padding-top: 2vh;
 }
 
 

@@ -1,6 +1,6 @@
 <% if @accommodations.length > 0 %>
 <body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image'>
-
+<%= link_to '←', :back, class: 'btn back' %>
   <div>
   <% @accommodations.each do |accommodation| %>
         <div class="card mx-auto text-center index border-dark" style = "width: 40vw;">
@@ -30,6 +30,8 @@
 
 <% else %>
 
+    <%= link_to '←', :back, class: 'btn back' %>
+    
     <header class = 'header'>
       <h2>Accommodation Details for <%= @trip.name %> </h2>
     </header>

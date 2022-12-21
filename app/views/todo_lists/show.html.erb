@@ -1,8 +1,9 @@
   <body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image' >
+    <%= link_to '←', :back, class: 'btn' %>
     <div class = 'container'>
       <div class = 'list-row'>
         <div class = 'col-md-10 col-lg-8 offset-md-1 offset-lg-2'>
-          <div class = 'card mt-5'>
+          <div class = 'card mt-5 list-card'>
             <div class = "card-header d-flex justify-content-between">
               <div>
                 <h5 class = 'm-0'> <b><%= @todo_list.description%></b></h5>
