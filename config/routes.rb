@@ -8,7 +8,9 @@ Rails.application.routes.draw do
       end
      end
 
-  root "trips#index"
+  root "home#index"
+
+    get "/home", to: "home#index"
 
   resources :users
 
