@@ -1,5 +1,5 @@
   <body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image' >
-    <%= link_to '←', :back, class: 'btn' %>
+    <%= link_to '←', trip_todo_lists_path(@trip), class: 'btn' %>
     <div class = 'container'>
       <div class = 'list-row'>
         <div class = 'col-md-10 col-lg-8 offset-md-1 offset-lg-2'>

@@ -29,7 +29,7 @@ class AccommodationsController < ApplicationController
    #Read
 
    def index
-    @accommodations = @trip.accommodations.order(created_at: :desc)
+    @accommodations = @trip.accommodations.order(check_in_date: :desc)
    end
 
    def show

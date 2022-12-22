@@ -25,7 +25,7 @@ class TransportationsController < ApplicationController
     # Read
 
     def index
-        @transportations = @trip.transportations.order(created_at: :desc)
+        @transportations = @trip.transportations.order(departure: :asc)
     end
 
    def show

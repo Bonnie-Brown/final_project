@@ -1,6 +1,6 @@
 <% if @todo_lists.length > 0 %>
 <body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image'>
-<%= link_to '←', :back, class: 'btn back' %>
+<%= link_to '←', trip_path(@trip), class: 'btn back' %>
 <div>
 
  <% @todo_lists.each do |todo_list| %>

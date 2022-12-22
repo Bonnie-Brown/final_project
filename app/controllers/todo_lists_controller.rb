@@ -34,7 +34,7 @@ class TodoListsController < ApplicationController
     end
 
     def show
-        @todo_items = @todo_list.todo_items.order(updated_at: :desc)
+        @todo_items = @todo_list.todo_items.order(created_at: :desc)
         @todo_item = TodoItem.new
         
     end
@@ -59,7 +59,7 @@ class TodoListsController < ApplicationController
     def destroy
         @todo_list.destroy
         flash[:success] = 'List deleted.'
-        redirect_to root_path
+        redirect_to trip_todo_lists_path
     end
 
     private

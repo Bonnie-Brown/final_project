@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "show_page", "data-turbo-track": "reload" %>
 <body style = "background-image: url(<%= @transportation.trip.image_url%>)" class = 'background-image'>
-<%= link_to '←', :back, class: 'btn back' %>
+<%= link_to '←', trip_transportations_path(@trip), class: 'btn back' %>
 <div class="container text-center">
   <div class="row">
     <div class="card-title"><h4 ><%= @transportation.company_name %></h4></div>
