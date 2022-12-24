@@ -1,0 +1,203 @@
+@import "simple_calendar";
+
+.sign_in_header{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.sign_in_form{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.header{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.welcome-header{
+    padding-top: 30px;
+    padding-left: 2vw;
+}
+.sign_up_form{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.sign_up_link{
+    text-align: center;
+    padding-top: 60px;
+}
+
+.empty_index{
+    text-align: center;
+    padding-top: 30vh;
+}
+
+.update_profile_header{
+   text-align: center;
+   padding-top: 20px;
+}
+.update_profile_form{
+   text-align: center;
+   padding-top: 20px;
+}
+
+.new_trip_header{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.accommodation_details_header{
+    padding-top: 20px;
+}
+
+.add_button{
+    text-align: center;
+    padding-bottom: 5vh;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 20vw;
+    object-fit: cover;
+}
+
+.index {
+    
+    margin-bottom: 50px;
+}
+
+.form{
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 100px;
+    padding-bottom: 5vh;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+.card {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.row{
+   
+    background-color: white;
+    border: solid black;
+    margin-left: 10vh;
+    margin-right: 10vh;
+    margin-bottom: 5vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    padding-bottom: 2vh;
+    word-break: break-word;
+
+}
+
+.list-row{
+    margin-top:0vh;
+    margin-bottom: 5vh;
+    padding-bottom: 2vh;
+    word-break: break-word;
+}
+.list-card{
+    margin-top:0vh
+}
+
+
+
+.background-image{
+    background-repeat: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.map{
+    margin-top: 0vh;
+    margin-bottom: 5vh
+}
+
+.simple-calendar {
+
+    .today {background-color: whitesmoke; border: solid black;}
+
+}
+
+.logo{
+    width:3vw;
+    padding-top: 2vh;
+    padding-bottom: 0px;
+
+}
+
+.btn:hover{
+    background-color:goldenrod;
+    border: none;
+    
+}
+
+.btn-danger:hover{
+    background-color: red;
+}
+
+a.navbar-brand:hover {
+    color:goldenrod !important;
+}
+
+.nav-link:hover{
+    color: goldenrod !important;
+}
+
+.o{
+    color: goldenrod;
+}
+
+a{
+    color: goldenrod;
+}
+a:hover{
+    color: darkgoldenrod;
+}
+input:focus{
+    outline: goldenrod;
+    border-color: goldenrod;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px goldenrod;
+}
+.form-control:focus {
+    border-color: goldenrod;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px goldenrod;
+}
+
+.calendar-heading{
+    padding-bottom: 2vh;
+}
+
+.calendar-title{
+    padding-left: 1vh;
+    padding-right: 1vh;
+}
+
+.back{
+    padding-top: 2vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

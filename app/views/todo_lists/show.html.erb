@@ -1,0 +1,107 @@
+  <body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image' >
+    <%= link_to '←', trip_todo_lists_path(@trip), class: 'btn' %>
+    <div class = 'container'>
+      <div class = 'list-row'>
+        <div class = 'col-md-10 col-lg-8 offset-md-1 offset-lg-2'>
+          <div class = 'card mt-5 list-card'>
+            <div class = "card-header d-flex justify-content-between">
+              <div>
+                <h5 class = 'm-0'> <b><%= @todo_list.description%></b></h5>
+                <p class = 'text-secondary m-0'><small> <%=@todo_list.percent_complete%>% Complete (<%=@todo_list.completed_items%>/<%=@todo_list.total_items%> Todo Items)</small></p>
+              </div>
+              <div class="d-flex">
+                <div class="m-1">
+                  <%= link_to 'Edit', edit_trip_todo_list_path(@trip, @todo_list), class:"btn btn-dark" %>
+                </div>
+                <div class="m-1">
+                  <%= button_to 'Delete', trip_todo_list_path(@trip, @todo_list), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-danger" %>
+                </div>
+              </div>
+
+             
+
+              </div>
+                <% if @todo_item.errors.any? %>
+                  <ul>
+                    <% @todo_item.errors.full_messages.each do |message| %>
+
+                    <li> <%= message %> </li>
+
+                  <% end %>
+
+                  </ul>
+
+                <% end %>
+                  <div class = "card-body">
+                    <div class="progress mb-4">
+                      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-label="Success striped example" style="width: <%=@todo_list.percent_complete%>%" aria-valuenow="<%=@todo_list.percent_complete%>%" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <%= form_with(model: [@trip, @todo_list, @todo_item]) do |form| %>
+                      <div class = 'input-group mb-4'>
+                        <% form.label :description%>
+                        <%= form.text_field :description, class: 'form-control', placeholder: "Add item"%> 
+                        <div class = 'input-group-append'>
+                            <%= form.submit "Add", class:"btn btn-dark input-group-btn" %>
+                        </div>
+                      </div>
+                    <% end %>
+
+                     <ul class = 'list-group'>
+                        <% @todo_list.todo_items.each do |todo_item| %>
+                          <% if todo_item.completed? %>
+                                <li class = 'list-group-item bg-light'>
+                                    <div class = "d-flex justify-content-between">
+                                      <span class = 'text-muted'>
+                                         <em><%= todo_item.description %></em>
+                                        </span>
+                                        <div class = "d-flex">
+                                          <div class="m-1">
+                                              <%= form_with(model: [@trip, @todo_list, todo_item]) do |form| %>
+                                                <%=form.hidden_field :completed, :value => false, method: :patch %>
+                                                <%= form.submit "↻", class:"btn btn-sm btn-dark input-group-btn", method: :patch %>
+                                              <%end%>
+                                            </div>
+                                            <div class="m-1">
+                                              <%= button_to 'X', trip_todo_list_todo_item_path(@trip, @todo_list, todo_item), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-sm btn-danger" %>
+                                            </div>
+                                        </div>
+                                  </div>
+                               </li>
+                             <%else%>
+                                  <li class = 'list-group-item'>
+                                    <div class = "d-flex justify-content-between">
+                                      <span>
+                                          <%= todo_item.description %> 
+                                        </span>
+                                        <div class = 'd-flex'>
+                                          <div class="m-1">
+                                            <%= form_with(model: [@trip, @todo_list, todo_item]) do |form| %>
+                                                <%=form.hidden_field :completed, :value => true, method: :patch %>
+                                                <%= form.submit "✓", class:"btn btn-sm btn-dark input-group-btn", method: :patch %>
+                                            <%end%>
+                                          </div>
+                                          <div class="m-1">
+                                            <%= button_to 'X', trip_todo_list_todo_item_path(@trip, @todo_list, todo_item), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-sm btn-danger" %>
+                                          </div>
+                                        </div>
+                                   </div>
+                                 </li>
+                             <%end%>
+                        <% end %>
+                     </ul>
+                  </div>
+
+               
+          
+
+                
+                  
+                    
+                      <%#= button_to 'Delete', trip_todo_list_todo_item_path(@trip, @todo_list, todo_item), method: :delete, form: {data: {turbo_confirm: "Are you sure you would like to proceed?"}}, class:"btn btn-outline-danger" %>
+
+              </div>
+            </div>    
+        </div>
+    </div>
+</body> 
+ 

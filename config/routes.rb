@@ -1,6 +1,24 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+     resources :trips do
+      resources :transportations
+      resources :accommodations
+      resources :todo_lists do
+        resources :todo_items
+      end
+     end
+
+  root "home#index"
+
+    get "/home", to: "home#index"
+
+  resources :users
+
+  resource :session, only: [:new, :create, :destroy]
+
+  resource :calendar, only: [:show]
+
+  get "password", to: "passwords#edit"
+  patch "password", to: "passwords#update"
+  
 end

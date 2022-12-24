@@ -1,0 +1,55 @@
+<div class = "form">
+    <%= form_with(model: [@trip, @transportation]) do |form| %>
+
+        <% if @transportation.errors.any? %>
+
+            <ul>
+                <% @transportation.errors.full_messages.each do |message| %>
+
+                    <li> <%= message %> </li>
+
+                <% end %>
+
+            </ul>
+
+        <% end %>
+
+        <div class="class=mb-3">
+            <%= form.label :company_name, {class: "form-label"} %>
+            <br>
+            <%= form.text_field :company_name, {class: "form-control"} %>
+        </div>
+
+        <br>
+        
+        <div class="class=mb-3">
+            <%= form.label :address, {class: "form-label"} %>
+            <br>
+            <%= form.text_field :address, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+
+        <div class="mb-3">
+            <%= form.label :departure, {class: "form-label"} %>
+            <%= form.datetime_select :departure, {class: "form-control"} %>
+        </div>
+  
+        <div class="mb-3">
+            <%= form.label :check_in_time, {class: "form-label"} %>
+            <%= form.time_select :check_in_time, {class: "form-control"} %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :arrival, {class: "form-label"} %>
+            <%= form.datetime_select :arrival, {class: "form-control"} %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :note, {class: "form-label"} %>
+            <%= form.text_area :note, {class: "form-control"} %>
+        </div>
+
+        <%= form.submit class:"btn btn-dark" %>
+
+    <% end %>
+</div>

@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "5.4.3",
+    "bootstrap-icons": "^1.10.2",
+    "stimulus_reflex": "3.4.1",
+    "underscore": "^1.13.6",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3"
+  }
+}

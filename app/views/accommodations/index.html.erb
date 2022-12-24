@@ -1,0 +1,45 @@
+<% if @accommodations.length > 0 %>
+<body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image'>
+<%= link_to '←', trip_path(@trip), class: 'btn back' %>
+  <div>
+  <% @accommodations.each do |accommodation| %>
+        <div class="card mx-auto text-center index border-dark" style = "width: 40vw;">
+        
+          <div class="card-body">
+        
+            <h4 class="card-title"><%= accommodation.name %></h4>
+            <br>
+            <h5 class="card-subtitle mb-2 text-muted">Check in:</h5>
+            <p class="card-title"><%= accommodation.check_in_date.strftime("%B, %d, %Y")%> at <%= accommodation.check_in_time.strftime("%k:%M %p")%></p>
+            <br>
+            <h5 class="card-subtitle mb-2 text-muted">Check out:</h5>
+            <p class="card-title"><%= accommodation.check_out_date.strftime("%B, %d, %Y")%> at <%= accommodation.check_out_time.strftime("%k:%M %p")%></p>
+            <br>
+            <%= link_to 'View', [@trip, accommodation], class:"btn btn-dark"%>
+          </div>
+        </div>
+
+          <% end %>
+
+  <div class = 'add_button'><%= link_to 'Add Accommodation', new_trip_accommodation_path(@trip), class:"btn btn-dark" %></div>
+
+  </div>
+
+  </body>
+
+
+<% else %>
+
+    <%= link_to '←', trip_path(@trip), class: 'btn back' %>
+
+    <header class = 'header'>
+      <h2>Accommodation Details for <%= @trip.name %> </h2>
+    </header>
+    <div class = 'empty_index'>
+      <h5>Where will you be staying?</h5>
+      <br>
+      <%= link_to 'Add Accommodation', new_trip_accommodation_path(@trip), class:"btn btn-dark" %> 
+    </div>
+
+<% end %>
+

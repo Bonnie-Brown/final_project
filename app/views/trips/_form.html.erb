@@ -1,0 +1,61 @@
+<div class = "form">
+    <%= form_with(model: @trip) do |form| %>
+
+        <% if @trip.errors.any? %>
+
+            <ul>
+                <% @trip.errors.full_messages.each do |message| %>
+
+                    <li> <%= message %> </li>
+
+                <% end %>
+
+            </ul>
+
+        <% end %>
+
+        <div class="class=mb-3">
+            <%= form.label :name, {class: "form-label"} %>
+            <br>
+            <%= form.text_field :name, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <%= form.label :destination, {class: "form-label"} %>
+            <br>
+            <%= form.text_field :destination, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <%= form.label :departure_date, {class: "form-label"} %>
+            <br>
+            <%= form.date_select :departure_date, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <%= form.label :return_date, {class: "form-label"} %>
+            <br>
+            <%= form.date_select :return_date, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <div class="mb-3">
+            <%= form.label :image_url, {class: "form-label"} %>
+            <br>
+            <%= form.text_area :image_url, {class: "form-control"} %>
+        </div>
+
+        <br>
+
+        <%= form.submit class:"btn btn-dark" %>
+
+    <% end %>
+</div>
+

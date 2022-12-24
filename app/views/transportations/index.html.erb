@@ -1,0 +1,47 @@
+<% if @transportations.length > 0 %>
+<body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image'>
+<%= link_to '←', trip_path(@trip), class: 'btn back' %>
+
+<div>
+
+ <% @transportations.each do |transportation| %>
+      <div class="card mx-auto text-center index border-dark" style = "width: 40vw;">
+      
+        <div class="card-body">
+       
+          <h5 class="card-title section" style = 'padding-bottom: 2vh'><%= transportation.company_name %></h5>
+          <h5 class="card-subtitle mb-2 text-muted">Check in time:</h5>
+          <p class="card-title" style = 'padding-bottom: 2vh'><%= transportation.check_in_time.strftime("%k:%M %p")%></p>
+          <h5 class="card-subtitle mb-2 text-muted">Departure:</h5>
+          <p class="card-title" style = 'padding-bottom: 2vh'> <%=transportation.departure.strftime("%B, %d, %Y, %k:%M %p")%></p>
+          <h5 class="card-subtitle mb-2 text-muted" >Arrival:</h5>
+          <p class="card-title" style = 'padding-bottom: 2vh'><%=transportation.arrival.strftime("%B, %d, %Y, %k:%M %p")%></p>
+
+          
+          
+
+          <%= link_to 'View', [@trip, transportation], class:"btn btn-dark"%>
+        </div>
+      </div>
+
+        <% end %>
+
+<div class = 'add_button'><%= link_to 'Add Transportation', new_trip_transportation_path(@trip), class:"btn btn-dark" %></div>
+
+</div>  
+</body>
+
+<% else %>
+
+<%= link_to '←', trip_path(@trip), class: 'btn back' %>
+
+    <header class = 'header'>
+      <h2>Transportation Details for <%= @trip.name %> </h2>
+    </header>
+    <div class = 'empty_index'>
+      <h5>Plain? Train? Automobile?</h5>
+      <br>
+      <%= link_to 'Add Transportation', new_trip_transportation_path(@trip), class:"btn btn-dark" %>
+    </div>
+
+<% end %>

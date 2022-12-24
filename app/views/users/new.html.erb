@@ -1,0 +1,49 @@
+<header class = 'header'>
+<h1> Sign Up </h1>
+</header>
+
+<div class = 'sign_up_form'>
+      <% if @user.errors.any? %>
+            <p> <%= @user.errors.full_messages.join(',') %> </p>
+      <% end %>
+
+      <%= form_with model: @user do |form| %>
+
+      <form>
+            <div class="mb-3">
+                  <%= form.label :first_name %>
+                  <br>
+                  <%= form.text_field :first_name %>
+            </div>
+
+            <div class="mb-3">
+                  <%= form.label :last_name %>
+                  <br>
+                  <%= form.text_field :last_name %>
+            </div>
+
+            <div class="mb-3">
+                  <%= form.label :email %>
+                  <br>
+                  <%= form.text_field :email %>
+            </div>
+
+            <div class="mb-3">
+                  <%= form.label :password %>
+                  <br>
+                  <%= form.password_field :password %>
+            </div>
+  
+            <div class="mb-3">
+                  <%= form.label :password_confirmation %>
+                  <br>
+                  <%= form.password_field :password_confirmation %>
+            </div>
+
+   
+            <%= form.submit "Sign Up", class: "btn btn-dark" %>
+      </form>
+  
+      <% end %>
+
+</div>

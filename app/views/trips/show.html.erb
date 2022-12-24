@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag "show_page", "data-turbo-track": "reload" %>
+<body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image'>
+<%= link_to '←', trips_path, class: 'btn back' %>
+<div class="card mx-auto border-dark" style="width: 50vw; height:70vh">
+  <div class="card-body">
+    <div class="card-title"> <h1 ><%= @trip.name %></h1></div>
+    <div class="card-subtitle mb-2 text-muted"><h4><%= @trip.destination %></h4></div>
+    <p class="card-text"><%= @trip.departure_date.strftime("%B, %d, %Y")%> to <%=@trip.return_date.strftime("%B, %d, %Y")%></p>
+    
+  <br>
+   
+  
+   <div class="d-grid gap-3 col-12 mx-auto">
+      <div class="dropdown-center d-grid gap-3 col-12 mx-auto">
+         <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          View Details
+         </button>
+         <ul class="dropdown-menu dropdown-menu-dark ">
+            <li><a class="dropdown-item" href="/trips/<%=@trip.id%>/accommodations">Accommodation Details</a></li>
+            <li><a class="dropdown-item" href="/trips/<%=@trip.id%>/transportations">Transportation Details</a></li>
+         </ul>
+   </div>
+      <%= link_to 'To-Do', trip_todo_lists_path(@trip), class:"btn btn-dark" %> 
+      <%= link_to 'Manage Trip', edit_trip_path(@trip), class:"btn btn-dark" %> 
+   </div> 
+ </div>
+</div>
+</body>
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+<%= stylesheet_link_tag "show_page", "data-turbo-track": "reload" %>
+<body style = "background-image: url(<%= @transportation.trip.image_url%>)" class = 'background-image'>
+<%= link_to '←', trip_transportations_path(@trip), class: 'btn back' %>
+<div class="container text-center">
+  <div class="row">
+    <div class="card-title"><h4 ><%= @transportation.company_name %></h4></div>
+    <p class="card-subtitle"><%= @transportation.address %></p>
+    <div class="card-text mb-2 text-muted"><h5>Check In</h5></div>
+    <p class="card-text"><%=@transportation.check_in_time.strftime("%k:%M %p")%> </p>
+    <div class="card-text mb-2 text-muted"><h5>Departure</h5></div>
+    <p class="card-text"><%=@transportation.departure.strftime("%B, %d, %Y, %k:%M %p")%> </p>
+    <div class="card-text mb-2 text-muted"><h5>Arrival</h5></div>
+    <p class="card-text"><%=@transportation.arrival.strftime("%B, %d, %Y, %k:%M %p")%> </p>
+    <% if @transportation.note.length > 0 %>
+    <div class="card-text mb-2 text-muted"><h5>Notes</h5></div>
+    <p class="card-text"><%=@transportation.note%> </p>
+    <% end %>
+    
+   <div>
+      <%= link_to 'Manage Transportation', edit_trip_transportation_path(@trip, @transportation), class:"btn btn-dark" %> 
+   </div> 
+ </div>
+
+  <% if @transportation.latitude && @transportation.longitude%>
+  <div class = 'row map' >
+ <div id = 'map' style = 'width: 800px; height: 400px;'></div>
+
+
+<script>
+//This is to create the map and copied from: https://github.com/apneadiving/Google-Maps-for-Rails
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers([
+        {
+        "lat": <%= @transportation.latitude %>, 
+        "lng": <%= @transportation.longitude %>,  
+        "picture": {
+            "width":  32,
+            "height": 32
+        },
+        "infowindow": "<%= @transportation.address %>'s location."
+        }
+    ]);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(17); //we are adding this to zoom in a bit
+});
+</script>
+
+</div>
+
+<% end %>
+</div>

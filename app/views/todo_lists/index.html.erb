@@ -1,0 +1,44 @@
+<% if @todo_lists.length > 0 %>
+<body style = "background-image: url(<%= @trip.image_url%>)" class = 'background-image'>
+<%= link_to '←', trip_path(@trip), class: 'btn back' %>
+<div>
+
+ <% @todo_lists.each do |todo_list| %>
+      <div class="card mx-auto text-center index border-dark" style = "width: 40vw;">
+      
+        <div class="card-body">
+       
+          <h5 class="card-title"><%= todo_list.description %>
+            <h6><span class="badge bg-<%= todo_list.badge_color %>"><%= todo_list.status %></span></h6>
+          </h5>
+
+          <div class="progress mb-4">
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" aria-label="Success striped example" style="width: <%=todo_list.percent_complete%>%" aria-valuenow="<%=todo_list.percent_complete%>%" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <%= link_to 'View', [@trip, todo_list], class: 'btn btn-outline-dark'%>
+        </div>
+      </div>
+
+ <% end %>
+
+<div class = 'add_button'><%= link_to 'New List', new_trip_todo_list_path(@trip), class:"btn btn-dark" %></div>
+
+</div>
+</body>
+
+<% else %>
+
+    <header class = 'header'>
+      <h2> To Do Lists </h2>
+    </header>
+    <div class = 'empty_index'>
+      <h5>What do you need to pack?</h5>
+      <h5>Where would you like to visit?</h5>
+      <br>
+      <%= link_to 'Make a List', new_trip_todo_list_path(@trip), class:"btn btn-dark"%>
+    </div>
+
+<% end %>
+
+
+

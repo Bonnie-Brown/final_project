@@ -1,0 +1,39 @@
+
+<h1 class = 'header'>Welcome back, <%=@current_user.first_name%>!</h1>
+
+<% if @trips.length > 0 %>
+  <h4 class = 'header'> Upcoming trips:</h4>
+  <br>
+  <div>
+    <% @trips.each do |trip| %>
+
+      <% if trip.departure_date > DateTime.current %>
+
+      <div class="card mx-auto text-center border-dark index" style = "width: 40vw;">
+        <% if trip.image_url%>
+          
+            <%= image_tag trip.image_url, class:"card-img-top" %>
+
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= trip.name %></h5>
+          <p class="card-text"><%= trip.destination %></p>
+          <p><%= trip.departure_date.strftime("%B, %d, %Y") %> to <%=trip.return_date.strftime("%B, %d, %Y")%></p>
+          <%= link_to 'View', trip_path(trip), class:"btn btn-dark" %>
+        </div>
+      </div>
+    <% end %>
+     <% end %>
+     <div class = 'add_button'><%= link_to 'New Trip', new_trip_path, class:"btn btn-dark" %></div>
+  </div>
+ 
+
+  <%else%>
+
+    <div class = 'empty_index'>
+      <h5>Not trips have been added yet.</h5>
+      <br>
+      <%= link_to "Let's get started", new_trip_path, class:"btn btn-dark" %>
+    </div>
+
+  <%end%>
